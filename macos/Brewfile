@@ -23,6 +23,8 @@ brew "git"
 brew "go"
 # Kubernetes package manager
 brew "helm"
+# Run local Kubernetes cluster in Docker
+brew "kind"
 # Tool to move from `docker-compose` to Kubernetes
 brew "kompose"
 # Simple terminal UI for git commands

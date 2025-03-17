@@ -83,6 +83,8 @@ cask "bentobox"
 cask "chatgpt"
 # Image, video and clipboard optimiser
 cask "clop"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software
@@ -95,6 +97,8 @@ cask "dropbox"
 cask "folx"
 # HTTP and GraphQL Client
 cask "insomnia"
+# Automatically ejects external drives
+cask "jettison"
 # Menu bar manager
 cask "jordanbaird-ice"
 # GPU-based terminal emulator
@@ -119,17 +123,19 @@ cask "raycast"
 cask "rocket"
 # Displays all open files and sockets in use by all running processes
 cask "sloth"
+# Design and collaborate in 3D
+cask "spline"
 # System monitor for the menu bar
 cask "stats"
 # Open-source code editor
 cask "visual-studio-code"
 # Rust-based terminal
 cask "warp"
-# Gecko based web browser
-cask "zen-browser"
 mas "Boom 3D", id: 1233048948
 mas "ColorSlurp", id: 1287239339
+mas "DaisyDisk", id: 411643860
 mas "DevCleaner", id: 1388020431
+mas "Disk Speed Test", id: 425264550
 mas "Enchanted", id: 6474268307
 mas "Free Ruler", id: 1483172210
 mas "Hand Mirror", id: 1502839586

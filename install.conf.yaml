@@ -5,6 +5,7 @@
 - link:
     ~/.zshrc: ./zsh/zshrc
     ~/.zshenv: ./zsh/zshenv
+    ~/.vimrc: ./.vimrc
     ~/.tmux.conf: ./tmux/tmux.conf
     ~/.config/bat:
       create: true
@@ -99,6 +100,10 @@
       stdout: true
       stderr: true
     - command: ./node/setup.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: touch ~/.stCommitMsg
       stdin: true
       stdout: true
       stderr: true

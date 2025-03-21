@@ -81,6 +81,8 @@ cask "arc"
 cask "bentobox"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Remotely access another computer through the Google Chrome browser
+cask "chrome-remote-desktop-host"
 # Image, video and clipboard optimiser
 cask "clop"
 # Write, edit, and chat about your code with AI

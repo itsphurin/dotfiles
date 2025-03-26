@@ -107,3 +107,6 @@ map <leader>X :!chmod +x %<CR>
 " zo - expand current section
 " zM - fold all
 " zR - expand all
+
+" hack on delete surrounding function
+nmap dsf :normal ](<CR>:normal ds(<CR>:normal h<CR>:normal vB"_d<CR>

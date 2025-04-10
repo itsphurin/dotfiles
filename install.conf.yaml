@@ -4,6 +4,7 @@
 - clean: ["~"]
 - link:
     ~/.zshrc: ./zsh/zshrc
+    ~/.zlogout: ./zsh/zlogout
     ~/.zshenv: ./zsh/zshenv
     ~/.vimrc: ./.vimrc
     ~/.tmux.conf: ./tmux/tmux.conf
@@ -67,6 +68,8 @@
       mode: 0700
 - create:
     ~/.ssh/keys:
+      mode: 0700
+    ~/.ssh/cm_socket:
       mode: 0700
     ~/.cache/logs:
       mode: 0744

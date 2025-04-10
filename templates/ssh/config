@@ -5,11 +5,22 @@ Host bitbucket.org
   IdentityFile ~/.ssh/id_ed25519
   ForwardAgent yes
 
+  # enable persistent SSH Connections for 10 mins to reduce key negotiation every time.
+  # don't forget to set permission with 700 on ~/.ssh/cm_socket
+  # and destroy files in ~/.ssh/cm_socket/* when logging out (~/.zlogout)
+  # to debug: `GIT_TRACE=1 GIT_SSH_COMMAND="ssh -vvv" git pull`
+  ControlMaster auto
+  ControlPath ~/.ssh/cm_socket/%r@%h-%p
+  ControlPersist 10m
+
 Host github.com
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_ed25519
   ForwardAgent yes
+  ControlMaster auto
+  ControlPath ~/.ssh/cm_socket/%r@%h-%p
+  ControlPersist 10m
 
 # Or with forward agent
 Host example.com

@@ -21,7 +21,9 @@ $haskell\
 $python\
 [](fg:teal bg:blue)\
 $docker_context\
-[](fg:blue bg:purple)\
+[](fg:blue bg:cyan)\
+$kubernetes\
+[](fg:cyan bg:purple)\
 $time\
 [ ](fg:purple)\
 $line_break$character"""
@@ -170,6 +172,12 @@ format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
 symbol = ""
 style = "bg:blue"
 format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
+
+[kubernetes]
+symbol = "⎈"
+style = 'bg:cyan'
+format = '[[ $symbol( $context) ](fg:base bg:cyan)]($style)'
+disabled = false
 
 [time]
 disabled = false

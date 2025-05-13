@@ -149,6 +149,7 @@ export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --
 export MANWIDTH_RIGHT_OFFSET=8
 
 # Change ZSH Options
+setopt REMATCH_PCRE
 
 # Create Aliases
 alias rl='omz reload'

@@ -1,23 +1,35 @@
 #!/usr/bin/env zsh
 
-# default location
-export KUBECONFIG="$HOME/.kube/config"
+# create merge function
+kubeconfig-merge() {
+	# Dynamically get all config files in ~/.kube
+	local configs=()
+	for config in "$HOME/.kube"/*; do
+		if [[ $config =~ '(cache|merged-config)' ]]; then
+			continue
+		else
+			configs+="$config"
+		fi
 
-# create switcher function
-kubeconfig() {
-	if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-		echo "Usage: kubeconfig [path to .kube/config file]"
-		echo "       Leave blank to see current \$KUBECONFIG"
-	elif [[ -z "$1" ]]; then
-		echo "Current \$KUBECONFIG: $KUBECONFIG"
-	elif [[ -f "$1" ]]; then
-		export KUBECONFIG="$1"
-		echo "Switched to kubeconfig: $KUBECONFIG"
-	else
-		echo "Error: File not found — $1"
-	fi
+	done
+
+	# Dynamically join configs with ':'
+	export KUBECONFIG=$(
+		IFS=:
+		echo "${configs[*]}"
+	)
+	if [[ $1 =~ '-v' ]]; then; echo "KUBECONFIG=$KUBECONFIG"; fi
+
+	# Merge and flatten to a single clean config
+	kubectl config view --merge --flatten >"$HOME/.kube/merged-config"
+
+	# Finally, point KUBECONFIG to the merged file
+	export KUBECONFIG="$HOME/.kube/merged-config"
+	if [[ $1 =~ '-v' ]]; then; echo "Merged kubeconfig saved to ~/.kube/merged-config"; fi
 }
 
 # shorten aliases
-alias kconfig=kubeconfig
-alias kc=kubeconfig
+alias kcm='kubeconfig-merge -v'
+
+# run on starting shell
+kubeconfig-merge

@@ -1,5 +1,12 @@
 # :zap: Phurinut's dotfiles
 
+![OS](https://img.shields.io/badge/OS-macOS%20%7C%20Linux-lightgrey)
+![Shell](https://img.shields.io/badge/Shell-Zsh-blue)
+![Editor](https://img.shields.io/badge/Editor-Neovim-green)
+![Terminal](https://img.shields.io/badge/Terminal-Kitty-orange)
+![Multiplexer](https://img.shields.io/badge/Multiplexer-Tmux-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 Welcome to my personal dotfiles! This repository is the heart of my daily development workflow, optimized for speed, minimal context switching, and deep CLI productivity.
 
 ## 📸 Example Workflow

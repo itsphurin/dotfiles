@@ -1,22 +1,45 @@
-## :zap: phurinutwara's dotfiles
+# :zap: Phurinut's dotfiles
 
-:rainbow: **Showcases**
+Welcome to my personal dotfiles! This repository is the heart of my daily development workflow, optimized for speed, minimal context switching, and deep CLI productivity.
 
-![Showcase Image](.github/assets/transparent-showcase.png)
+<!-- :rainbow: **Showcases** -->
 
----
+<!-- ![Showcase Image](.github/assets/transparent-showcase.png) -->
 
-:sparkles: **Features**
+## :sparkles: **Key Features**
 
-| Tool    | Ready ?            |
-| ------- | ------------------ |
-| Neovim  | :white_check_mark: |
-| TMUX    | :white_check_mark: |
-| Wezterm | :white_check_mark: |
+- 🖥️ **Terminal & Prompt**
 
----
+  - `starship` for blazing-fast and beautiful command prompt.
+  - Custom Powerline-style tmux status bar.
+  - `kitty` installer for use seamlessly across multiple OS.
 
-:pushpin: **How to use**
+- 📚 **Editor**
+
+  - Fully customized `Neovim` with Lua config.
+  - Plugins for LSP, Treesitter, Telescope, and smooth scrolling.
+  - Intuitive key mappings for faster navigation and coding.
+
+- 📂 **Multiplexer**
+
+  - `tmux` + `tmux-resurrect` for session persistence and `tmuxinator` for sessioning across project folder.
+  - Custom `tmux` plugins for pane management and productivity.
+
+- ⚙️ **ZSH Enhancements**
+
+  - Oh-My-Zsh + Custom Plugins.
+  - Useful shell functions stored under `zsh/scripts` to automate daily repetitive tasks.
+  - Kubernetes KUBECONFIG switcher and Git workflow shortcuts.
+
+- 🐳 **Developer Utilities**
+  - Docker & Kubernetes helper scripts.
+  - Git alias shortcuts for safe and fast commits, logs, and rebase workflows.
+
+## 🚀 Philosophy
+
+> _“I believe that small optimizations in daily developer workflows compound into significant long-term productivity gains.”_
+
+## :pushpin: **How to use**
 
 1. Clone this repo to your machine
 
@@ -32,17 +55,4 @@ $ cd ~/dotfiles && ./install
 
 ---
 
-<details>
-        <summary>
-                📚 <b>TODOs</b>
-        </summary>
-
-- [x] Terminal Preferences (via dotfile installation)
-- [x] Changed Shell to ZSH (via dotfile installation)
-- [x] Maximize key repeat period (configured for arch)
-- [x] Git (config and SSH)
-- [x] use arch on mac (See more: https://github.com/kyoz/mac-arch
-                                 https://t2linux.org
-                                 https://wiki.archlinux.org/title/Mac
-                                 https://bbs.archlinux.org/viewtopic.php?id=122700)
-</details>
+📌 **Try it out or explore the scripts under `zsh/scripts` to find some hidden gems!**

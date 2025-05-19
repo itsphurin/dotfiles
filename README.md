@@ -2,9 +2,11 @@
 
 Welcome to my personal dotfiles! This repository is the heart of my daily development workflow, optimized for speed, minimal context switching, and deep CLI productivity.
 
-<!-- :rainbow: **Showcases** -->
+## 📸 Example Workflow
 
-<!-- ![Showcase Image](.github/assets/transparent-showcase.png) -->
+Here's a glimpse of my daily development workflow using Kitty, Tmux, and Neovim seamlessly integrated.
+
+![Showcase Image](.github/assets/example-screenshot.png)
 
 ## :sparkles: **Key Features**
 

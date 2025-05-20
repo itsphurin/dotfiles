@@ -107,6 +107,8 @@ cask "insomnia"
 cask "jettison"
 # Menu bar manager
 cask "jordanbaird-ice"
+# Open-source screen recorder built with web technology
+cask "kap"
 # GPU-based terminal emulator
 cask "kitty"
 # Software for Logitech devices

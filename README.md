@@ -13,7 +13,7 @@ Welcome to my personal dotfiles! This repository is the heart of my daily develo
 
 Here's a glimpse of my daily development workflow using Kitty, Tmux, and Neovim seamlessly integrated.
 
-![Showcase Image](.github/assets/example-screenshot.png)
+![Showcase Image](.github/assets/workflow-screenshot.gif)
 
 ## :sparkles: **Key Features**
 

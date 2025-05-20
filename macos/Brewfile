@@ -109,6 +109,8 @@ cask "jettison"
 cask "jordanbaird-ice"
 # Open-source screen recorder built with web technology
 cask "kap"
+# Open-source keystroke visualiser
+cask "keycastr"
 # GPU-based terminal emulator
 cask "kitty"
 # Software for Logitech devices

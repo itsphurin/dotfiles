@@ -84,6 +84,7 @@ plugins=(
   kubectl
   vi-mode
   z
+  zsh-autocomplete
   zsh-autosuggestions
   zsh-syntax-highlighting
 )

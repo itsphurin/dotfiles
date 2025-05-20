@@ -7,6 +7,7 @@ $username\
 [](bg:peach fg:surface0)\
 $directory\
 [](fg:peach bg:green)\
+$git_commit\
 $git_branch\
 $git_status\
 [](fg:green bg:teal)\
@@ -113,6 +114,13 @@ truncation_symbol = "…/"
 "Music" = "󰝚 "
 "Pictures" = " "
 "Developer" = "󰲋 "
+
+[git_commit]
+tag_symbol = " - "
+tag_disabled = false
+only_detached = false
+commit_hash_length = 7
+format = '[[( $hash$tag_symbol$tag -)](fg:base bg:green)]($style)'
 
 [git_branch]
 symbol = ""

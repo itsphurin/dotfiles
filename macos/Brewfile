@@ -91,6 +91,8 @@ cask "chatgpt"
 cask "chrome-remote-desktop-host"
 # Image, video and clipboard optimiser
 cask "clop"
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software

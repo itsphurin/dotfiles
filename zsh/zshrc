@@ -84,15 +84,15 @@ plugins=(
   kubectl
   vi-mode
   z
-  zsh-autocomplete
+  # zsh-autocomplete
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
 # Bash Completion
 # See more: https://wiki.debian.org/Add%20Bash%20Completion
-# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-# autoload -U compinit && compinit
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -Uz compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 

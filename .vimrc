@@ -27,7 +27,7 @@ set relativenumber
 set showmode
 
 " Use system clipboard
-" set clipboard+=unnamedplus
+set clipboard^=unnamed
 
 " Don't use Ex mode, use Q for formatting
 map Q gq

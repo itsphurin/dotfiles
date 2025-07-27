@@ -179,6 +179,7 @@ alias mux='tmux'
 alias muxi='tmuxinator'
 alias mux-clear='rm ~/.local/share/tmux/resurrect/*'
 alias mux!='mux-clear; tmux'
+alias py3='python3'
 
 # useful copy and travel path across terminal
 alias pwdc='echo -n $(pwd) | clipcopy'

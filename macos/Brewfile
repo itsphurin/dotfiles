@@ -47,6 +47,8 @@ brew "nmap"
 brew "nvm"
 # Open Fortinet client for PPP+TLS VPN tunnel services
 brew "openfortivpn"
+# Python dependency management tool
+brew "pipenv"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Object-relational database system
@@ -57,6 +59,8 @@ brew "postgresql@17", link: true
 brew "pwgen"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Cross-shell prompt for astronauts
@@ -145,6 +149,8 @@ cask "sloth"
 cask "spline"
 # System monitor for the menu bar
 cask "stats"
+# Virtual machines UI using QEMU
+cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Rust-based terminal

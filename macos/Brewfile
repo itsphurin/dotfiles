@@ -57,6 +57,8 @@ brew "postgresql@14", link: false
 brew "postgresql@17", link: true
 # Password generator
 brew "pwgen"
+# Python version management
+brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language

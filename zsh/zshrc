@@ -152,7 +152,7 @@ export TERMINAL="kitty"
 
 # USE NVIM as VISUAL EDITOR: https://unix.stackexchange.com/a/501863
 export VISUAL="$EDITOR"
-export BROWSER="zen-browser"
+# export BROWSER="zen-browser"
 
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat

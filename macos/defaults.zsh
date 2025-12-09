@@ -21,9 +21,10 @@ echo 'OK'
 
 echo -n '[2/2] adjusting InitialKeyRepeat and KeyRepeat...'
 # See https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x/83923#83923
-# Defaults are InitialKeyRepeat = ? , KeyRepeat = ?
-defaults write NSGlobalDomain InitialKeyRepeat -int 9
-defaults write NSGlobalDomain KeyRepeat -int 1
+# My default comfortable is KeyRepeat = 2, InitialKeyRepeat = 15
+# For ADHD's is  KeyRepeat = 1, InitialKeyRepeat = 9
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 echo 'OK'
 
 echo "\nCompleted macos configuration with 'defaults' command.\n"

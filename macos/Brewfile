@@ -5,10 +5,12 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 # In-depth attack surface mapping and asset discovery
 brew "amass"
-# Official Amazon AWS command-line interface
-brew "awscli"
+# GitOps Continuous Delivery for Kubernetes
+brew "argocd"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Emacs dependency management
 brew "cask"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
@@ -19,6 +21,8 @@ brew "cmake"
 brew "direnv"
 # Modern, maintained replacement for ls
 brew "eza"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
 # Remote repository management made easy
 brew "ghq"
 # Distributed revision control system
@@ -27,18 +31,18 @@ brew "git"
 brew "go"
 # Kubernetes package manager
 brew "helm"
+# Interactive environments for writing and running code
+brew "jupyterlab"
 # Run local Kubernetes cluster in Docker
 brew "kind"
 # Tool to move from `docker-compose` to Kubernetes
 brew "kompose"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Apple Silicon Monitor Top written in Golang
+# Apple Silicon Monitor Top written in Go Lang
 brew "mactop"
 # Mac App Store command-line interface
 brew "mas"
-# Run a Kubernetes cluster locally
-brew "minikube"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
@@ -51,26 +55,30 @@ brew "openfortivpn"
 brew "pipenv"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Python package management tool
+brew "poetry"
 # Object-relational database system
-brew "postgresql@14", link: false
+brew "postgresql@14"
 # Object-relational database system
-brew "postgresql@17", link: true
+brew "postgresql@17"
 # Password generator
 brew "pwgen"
 # Python version management
 brew "pyenv"
+# Python interface to Tcl/Tk
+brew "python-tk@3.13"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Display and control your Android device
+brew "scrcpy"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Subdomain discovery tool
 brew "subfinder"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
 # Simplified and community-driven man pages
 brew "tldr"
 # Manage complex tmux sessions easily
@@ -85,44 +93,60 @@ brew "yq"
 brew "eth-p/software/bat-extras-batman"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Android SDK component
+cask "android-platform-tools"
+# Memory training application
+cask "anki"
+# AI Coding Agent IDE
+cask "antigravity"
+# Allows connection to a computer remotely
+cask "anydesk"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
+# Integrated CAD, CAM, CAE, and PCB software
+cask "autodesk-fusion"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Window manager that organizes desktop applications into predefined zones
 cask "bentobox"
+# Display management tool
+cask "betterdisplay"
+# 3D creation suite
+cask "blender"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
-# Remotely access another computer through the Google Chrome browser
-cask "chrome-remote-desktop-host"
 # Image, video and clipboard optimiser
 cask "clop"
-# Free app that makes your Internet safer
-cask "cloudflare-warp"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker"
 # Online diagram software
 cask "drawio"
 # Client for the Dropbox cloud storage service
 cask "dropbox"
 # Download manager with a torrent client
 cask "folx"
+# Web browser
+cask "google-chrome"
 # HTTP and GraphQL Client
 cask "insomnia"
+# Video and photo editor
+cask "insta360-studio"
 # Automatically ejects external drives
 cask "jettison"
 # Menu bar manager
 cask "jordanbaird-ice"
-# Open-source screen recorder built with web technology
-cask "kap"
 # Open-source keystroke visualiser
 cask "keycastr"
 # GPU-based terminal emulator
 cask "kitty"
+# Discover, download, and run local LLMs
+cask "lm-studio"
+# WordPress local development tool by Flywheel
+cask "local"
 # Software for Logitech devices
 cask "logi-options+"
 # Open-source, KeePass-client and password manager
@@ -135,20 +159,28 @@ cask "microsoft-teams"
 cask "ngrok"
 # Handy utility to manage and customize the notch area
 cask "notchnook"
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # System and utility switches
 cask "only-switch"
+# Remote desktop
+cask "parsec"
+# PHP IDE by JetBrains
+cask "phpstorm"
+# Browse, manage, inspect containers and images
+cask "podman-desktop"
 # Collaboration platform for API development
 cask "postman"
-# IDE for Python programming - Community Edition
-cask "pycharm-ce"
+# IDE for professional Python development
+cask "pycharm"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Emoji picker optimised for blind people
 cask "rocket"
 # Displays all open files and sockets in use by all running processes
 cask "sloth"
-# Design and collaborate in 3D
-cask "spline"
 # System monitor for the menu bar
 cask "stats"
 # Virtual machines UI using QEMU
@@ -157,27 +189,38 @@ cask "utm"
 cask "visual-studio-code"
 # Rust-based terminal
 cask "warp"
+# JavaScript IDE
+cask "webstorm"
 # Network protocol analyzer
-cask "wireshark"
+cask "wireshark-app"
+mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Boom 3D", id: 1233048948
+mas "Clever Data Recovery", id: 431224317
 mas "ColorSlurp", id: 1287239339
+mas "CrystalFetch", id: 6454431289
 mas "DaisyDisk", id: 411643860
 mas "DevCleaner", id: 1388020431
-mas "Disk Speed Test", id: 425264550
+mas "Ebook Converter", id: 1081457679
 mas "Enchanted", id: 6474268307
 mas "Free Ruler", id: 1483172210
 mas "Hand Mirror", id: 1502839586
+mas "JSON Peep", id: 1458969831
 mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
 mas "LINE", id: 539883307
 mas "Maccy", id: 1527619437
 mas "Magnet", id: 441258766
-mas "MonitorControlLite", id: 1595464182
+mas "Notion Web Clipper", id: 1559269364
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "PDFOptim", id: 621276561
+mas "Perplexity", id: 6714467650
 mas "Redis Insight", id: 6446987963
 mas "S3", id: 6447647340
+mas "Tailscale", id: 1475387142
+mas "Virtual Intranet Access", id: 1439900554
 mas "Widgetter", id: 1553223588
-mas "Xcode", id: 497799835
+mas "Windows App", id: 1295203466
 vscode "aaron-bond.better-comments"
 vscode "ahmadalli.vscode-nginx-conf"
 vscode "andenetalexander.vim-cheatsheet"
@@ -227,6 +270,7 @@ vscode "mechatroner.rainbow-csv"
 vscode "mhutchie.git-graph"
 vscode "mikestead.dotenv"
 vscode "mrmlnc.vscode-scss"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-edgedevtools.vscode-edge-devtools"
 vscode "ms-kubernetes-tools.kind-vscode"
@@ -234,6 +278,7 @@ vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
@@ -243,12 +288,12 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-wsl"
 vscode "ms-vscode.js-debug-nightly"
 vscode "ms-vscode.makefile-tools"
+vscode "ms-vscode.vscode-speech"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "naumovs.color-highlight"
 vscode "oderwat.indent-rainbow"
 vscode "openai.chatgpt"
 vscode "orta.vscode-jest"
-vscode "pkief.material-icon-theme"
 vscode "plex.vscode-protolint"
 vscode "pnp.polacode"
 vscode "redhat.vscode-yaml"
@@ -263,7 +308,9 @@ vscode "styled-components.vscode-styled-components"
 vscode "sumneko.lua"
 vscode "tabeyti.jenkins-jack"
 vscode "timonwong.shellcheck"
+vscode "tombonnike.vscode-status-bar-format-toggle"
 vscode "vintharas.learn-vim"
+vscode "vira.vsc-vira-theme"
 vscode "vscodevim.vim"
 vscode "wayou.vscode-todo-highlight"
 vscode "william-voyek.vscode-nginx"
@@ -272,7 +319,10 @@ vscode "wordpresstoolbox.wordpress-toolbox"
 vscode "xabikos.javascriptsnippets"
 vscode "yogensia.searchwpdocs"
 vscode "yzhang.markdown-all-in-one"
-vscode "zhuangtongfa.material-theme"
 vscode "zxh404.vscode-proto3"
+go "github.com/air-verse/air"
+go "github.com/go-delve/delve/cmd/dlv"
+go "golang.org/x/tools/gopls"
+go "honnef.co/go/tools/cmd/staticcheck"
 
 # vim:ft=ruby

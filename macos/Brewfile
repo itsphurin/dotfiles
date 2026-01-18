@@ -75,6 +75,8 @@ brew "rust"
 brew "scrcpy"
 # SMART hard drive monitoring
 brew "smartmontools"
+# Command-line interface for https://speedtest.net bandwidth tests
+brew "speedtest-cli"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Subdomain discovery tool
@@ -99,8 +101,6 @@ cask "android-platform-tools"
 cask "anki"
 # AI Coding Agent IDE
 cask "antigravity"
-# Allows connection to a computer remotely
-cask "anydesk"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
@@ -119,8 +119,6 @@ cask "blender"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
 # Databases and SQL IDE
@@ -133,12 +131,16 @@ cask "drawio"
 cask "dropbox"
 # Download manager with a torrent client
 cask "folx"
+# Desktop client for GitHub repositories
+cask "github"
 # Web browser
 cask "google-chrome"
 # HTTP and GraphQL Client
 cask "insomnia"
 # Video and photo editor
 cask "insta360-studio"
+# Java IDE by JetBrains
+cask "intellij-idea"
 # Automatically ejects external drives
 cask "jettison"
 # Menu bar manager
@@ -223,7 +225,6 @@ mas "Redis Insight", id: 6446987963
 mas "Reeder", id: 6475002485
 mas "S3", id: 6447647340
 mas "Tailscale", id: 1475387142
-mas "Virtual Intranet Access", id: 1439900554
 mas "Widgetter", id: 1553223588
 mas "Windows App", id: 1295203466
 vscode "aaron-bond.better-comments"

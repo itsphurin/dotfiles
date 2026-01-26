@@ -6,8 +6,9 @@
 
 if [[ $ID == "arch" ]]; then
   export GOROOT=/usr/lib/go
-elif [[ $OS_TYPE == "darwin"* ]]; then
-  export GOROOT="$(brew --prefix golang)/libexec"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Static path (regenerate with: brew --prefix golang)
+  export GOROOT="/opt/homebrew/opt/go/libexec"
 fi
 
 export GOPATH=$HOME/go

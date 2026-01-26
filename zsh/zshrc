@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+[[ -n "$ZPROF" ]] && zmodload zsh/zprof
 
 # Specify OS first
 [[ -f /etc/os-release ]] && source /etc/os-release
@@ -166,7 +166,7 @@ setopt REMATCH_PCRE
 alias rl='omz reload'
 alias ls='eza -lah --git'
 alias eza='eza -lah --git'
-alias man="update_man_width;BAT_THEME='Monokai Extended' batman '$@'"
+# man alias is defined in batman-theme.sh with lazy theme detection
 alias trail='<<<${(F)path}' # See https://zsh.sourceforge.io/Doc/Release/Expansion.html
 alias szsh='source ~/.zshrc'
 alias cmd='command'
@@ -287,17 +287,9 @@ source ~/dotfiles/zsh/scripts/auto-Hypr.sh
 source ~/dotfiles/zsh/scripts/batman-theme.sh
 
 # Support custom scripts
-for script in "$(realpath ~/dotfiles/zsh/scripts/custom)"/*.sh; do
-  source "$script"
+for script in "$HOME/dotfiles/zsh/scripts/custom"/*.sh(N); do
+  [[ -f "$script" ]] && source "$script"
 done
-
-# Smarter completion initialization
-autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-  compinit
-else
-  compinit -C
-fi
 
 # Other uncategorized stuffs here (from appending output to >> .zshrc)
 
@@ -306,3 +298,5 @@ export PATH="$PATH:/Users/phurin/.lmstudio/bin"
 # End of LM Studio CLI section
 
 export PATH="$HOME/.local/bin:$PATH"
+
+[[ -n "$ZPROF" ]] && zprof

@@ -1,10 +1,14 @@
 #!/usr/bin/env zsh
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	current_theme=$(defaults read -g AppleInterfaceStyle /dev/null 2>&1)
-	if [[ "$current_theme" == "Dark" ]]; then
-		alias man="update_man_width;BAT_THEME='Monokai Extended' batman '$@'"
-	else
-		alias man="update_man_width;BAT_THEME='Monokai Extended Light' batman '$@'"
-	fi
+  function man() {
+    local theme
+    if [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == "Dark" ]]; then
+      theme='Monokai Extended'
+    else
+      theme='Monokai Extended Light'
+    fi
+    eval "function man() { update_man_width; BAT_THEME='$theme' batman \"\$@\"; }"
+    man "$@"
+  }
 fi

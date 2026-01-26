@@ -3,7 +3,14 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export BREWFILE_PATH="$HOME/dotfiles/macos/Brewfile"
   mkdir -p "$(dirname "$BREWFILE_PATH")"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Static brew shellenv (regenerate with: /opt/homebrew/bin/brew shellenv)
+  export HOMEBREW_PREFIX="/opt/homebrew"
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+  export HOMEBREW_REPOSITORY="/opt/homebrew"
+  fpath[1,0]="/opt/homebrew/share/zsh/site-functions"
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
+  [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 elif [[ $(uname -r) == *'WSL'* ]]; then
   export BREWFILE_PATH="$HOME/dotfiles/linux/WSL/Brewfile"
   mkdir -p "$(dirname "$BREWFILE_PATH")"

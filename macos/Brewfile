@@ -3,6 +3,7 @@ tap "eth-p/software"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "steipete/tap"
 # In-depth attack surface mapping and asset discovery
 brew "amass"
 # GitOps Continuous Delivery for Kubernetes
@@ -23,6 +24,8 @@ brew "direnv"
 brew "eza"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
+# GitHub command-line tool
+brew "gh"
 # Remote repository management made easy
 brew "ghq"
 # Distributed revision control system
@@ -99,8 +102,6 @@ brew "hashicorp/tap/terraform"
 cask "android-platform-tools"
 # Memory training application
 cask "anki"
-# AI Coding Agent IDE
-cask "antigravity"
 # Application uninstaller
 cask "appcleaner"
 # Chromium based browser
@@ -121,6 +122,8 @@ cask "chatgpt"
 cask "claude"
 # Image, video and clipboard optimiser
 cask "clop"
+# Menu bar usage monitor for Codex and Claude
+cask "steipete/tap/codexbar"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software
@@ -131,10 +134,10 @@ cask "drawio"
 cask "dropbox"
 # Download manager with a torrent client
 cask "folx"
-# Desktop client for GitHub repositories
-cask "github"
 # Web browser
 cask "google-chrome"
+# Open-source video transcoder
+cask "handbrake-app"
 # HTTP and GraphQL Client
 cask "insomnia"
 # Video and photo editor
@@ -161,8 +164,6 @@ cask "macpass"
 cask "microsoft-auto-update"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # Handy utility to manage and customize the notch area
 cask "notchnook"
 # App to write, plan, collaborate, and get organised
@@ -179,12 +180,16 @@ cask "phpstorm"
 cask "podman-desktop"
 # Collaboration platform for API development
 cask "postman"
+# HTTP debugging proxy
+cask "proxyman"
 # IDE for professional Python development
 cask "pycharm"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Emoji picker optimised for blind people
 cask "rocket"
+# Screenshot measurement and annotation tool
+cask "shottr"
 # Displays all open files and sockets in use by all running processes
 cask "sloth"
 # System monitor for the menu bar
@@ -197,20 +202,20 @@ cask "visual-studio-code"
 cask "warp"
 # JavaScript IDE
 cask "webstorm"
-# Network protocol analyzer
-cask "wireshark-app"
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Boom 3D", id: 1233048948
 mas "Clever Data Recovery", id: 431224317
 mas "ColorSlurp", id: 1287239339
 mas "CrystalFetch", id: 6454431289
 mas "DaisyDisk", id: 411643860
+mas "DaVinci Resolve", id: 571213070
 mas "DevCleaner", id: 1388020431
 mas "Ebook Converter", id: 1081457679
 mas "Enchanted", id: 6474268307
 mas "Free Ruler", id: 1483172210
 mas "Hand Mirror", id: 1502839586
 mas "JSON Peep", id: 1458969831
+mas "Keka", id: 470158793
 mas "Keynote", id: 409183694
 mas "Kindle", id: 302584613
 mas "LINE", id: 539883307

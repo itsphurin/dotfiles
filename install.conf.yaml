@@ -21,6 +21,11 @@
       create: true
       path: ~/Dropbox/config/btop
     ~/.gitconfig: ./.gitconfig
+    ~/.claude/settings.json: ./.claude/settings.json
+    ~/.claude/settings.local.json: ./.claude/settings.local.json
+    ~/.claude/hooks:
+      create: true
+      path: ./.claude/hooks
     # Linux stuffs
     ~/.config/hypr:
       create: true

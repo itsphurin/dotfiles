@@ -2,15 +2,20 @@
   "permissions": {
     "defaultMode": "plan"
   },
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
-  },
   "hooks": {
     "Notification": [
       {
-        "hooks": [{ "type": "command", "command": "~/.claude/hooks/tmux-notify.sh" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/tmux-notify.sh"
+          }
+        ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
   }
 }

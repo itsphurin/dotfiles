@@ -10,6 +10,7 @@ if ls $TPM_PATH >/dev/null 2>&1; then
 else
 	echo "tpm doesn't exist, continuing with install"
 	git clone https://github.com/tmux-plugins/tpm $TPM_PATH
+	pip3 install --break-system-packages --user 'git+https://github.com/tmux-python/libtmux.git'
 fi
 
 if exists tmuxinator; then

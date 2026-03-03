@@ -5,3 +5,7 @@ config/kitty/kitty.conf.d
 config/fcitx5/conf/cached_layouts
 zsh/scripts/custom
 **/.DS_Store
+
+**/.env
+**/.env.*.local
+**/.env.local

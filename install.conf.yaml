@@ -26,6 +26,9 @@
     ~/.claude/hooks:
       create: true
       path: ./.claude/hooks
+    ~/.claude/skills:
+      create: true
+      path: ./.claude/skills
     # Linux stuffs
     ~/.config/hypr:
       create: true

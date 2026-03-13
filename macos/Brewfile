@@ -3,6 +3,7 @@ tap "eth-p/software"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "sdkman/tap"
 tap "steipete/tap"
 # In-depth attack surface mapping and asset discovery
 brew "amass"
@@ -30,6 +31,8 @@ brew "gh"
 brew "ghq"
 # Distributed revision control system
 brew "git"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Kubernetes package manager
@@ -110,6 +113,8 @@ cask "arc"
 cask "autodesk-fusion"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# SDKMAN! the Software Development Kit Manager
+brew "sdkman/tap/sdkman-cli"
 # Window manager that organizes desktop applications into predefined zones
 cask "bentobox"
 # Display management tool

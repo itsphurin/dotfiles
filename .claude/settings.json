@@ -18,6 +18,9 @@
     "superpowers@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "voltagent-data-ai@voltagent-subagents": true,
-    "code-simplifier@claude-plugins-official": true
-  }
+    "code-simplifier@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
+  },
+  "voiceEnabled": true,
+  "skipDangerousModePermissionPrompt": true
 }

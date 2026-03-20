@@ -98,5 +98,9 @@
   },
   "effortLevel": "medium",
   "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "teammateMode": "tmux",
+  "preferences": {
+    "tmuxSplitPanes": true
+  }
 }

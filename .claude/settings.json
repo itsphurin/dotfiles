@@ -16,17 +16,7 @@
     "frontend-design@claude-plugins-official": true,
     "github@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
-    "impeccable@impeccable": true,
-    "voltagent-biz@voltagent-subagents": true,
-    "voltagent-core-dev@voltagent-subagents": true,
-    "voltagent-data-ai@voltagent-subagents": true,
-    "voltagent-dev-exp@voltagent-subagents": true,
-    "voltagent-domains@voltagent-subagents": true,
-    "voltagent-infra@voltagent-subagents": true,
-    "voltagent-lang@voltagent-subagents": true,
-    "voltagent-meta@voltagent-subagents": true,
-    "voltagent-qa-sec@voltagent-subagents": true,
-    "voltagent-research@voltagent-subagents": true
+    "impeccable@impeccable": true
   },
   "extraKnownMarketplaces": {
     "impeccable": {
@@ -41,10 +31,10 @@
         "repo": "czlonkowski/n8n-skills"
       }
     },
-    "voltagent-subagents": {
+    "claude-code-workflows": {
       "source": {
         "source": "github",
-        "repo": "VoltAgent/awesome-claude-code-subagents"
+        "repo": "wshobson/agents"
       }
     }
   },

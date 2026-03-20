@@ -51,7 +51,7 @@ Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in env (already configured in 
 
 When spawning teammates, scan the Agent tool's available `subagent_type` list for **domain-specific plugin agents** (e.g. `plugin-name:agent-name`). Plugin agents are specialists — use them as teammates when the task matches their domain.
 
-For example, instead of a generic "Backend implementer" teammate, spawn one using `voltagent-lang:python-pro` if the backend is Python. Instead of a generic "Security reviewer", use a plugin security specialist if available.
+For example, instead of a generic "Backend implementer" teammate, spawn one using a plugin's Python specialist if the backend is Python. Instead of a generic "Security reviewer", use a plugin security specialist if available. Check the Agent tool's available `subagent_type` list for exact names (format: `plugin-name:agent-name`).
 
 **Rule**: Always check available plugin agents first. Use them as teammate agent types when they match the task domain. Fall back to custom or built-in agents for general tasks.
 

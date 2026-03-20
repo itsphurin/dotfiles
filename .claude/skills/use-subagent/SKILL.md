@@ -26,7 +26,7 @@ Before using a generic agent, scan the Agent tool's available `subagent_type` li
 
 **Selection logic:**
 1. Identify the task's **language, framework, or domain** (e.g. TypeScript, Kubernetes, security audit)
-2. Scan available agent types for a specialist that matches (e.g. `voltagent-lang:typescript-pro`, `voltagent-infra:kubernetes-specialist`)
+2. Scan available agent types for a specialist that matches (e.g. `plugin-name:typescript-pro`, `plugin-name:kubernetes-specialist`)
 3. If a specialist exists → use it via `subagent_type: "plugin-name:agent-name"`
 4. If no specialist matches → fall back to custom agents below
 

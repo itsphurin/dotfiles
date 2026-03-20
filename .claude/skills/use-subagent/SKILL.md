@@ -1,85 +1,93 @@
 ---
 name: use-subagent
-description: Force using subagent(s) to handle the given task. Dispatches work to specialized sub-agents running in isolated context windows. Use when you want focused, parallel delegation without agent team overhead.
+description: Delegate tasks to subagent(s) instead of doing the work directly. Use for parallel or specialized delegation — code review, research, implementation, debugging, testing.
 ---
 
-# Use Subagent — Force Subagent Delegation
+# Use Subagent — Delegate, Don't Implement
 
-## Overview
+**You are a coordinator.** Parse the task, dispatch subagent(s) via the Agent tool, and synthesize results.
 
-**Delegate the task to subagent(s). Do not do the work yourself.**
+## Workflow
 
-When this skill is active, you MUST use the Agent tool to dispatch work. You are a coordinator, not an implementer.
-
-## Rules
-
-1. **Parse the task** from the user's message after `/use-subagent`
-2. **Choose agent type(s)** based on the task (see Decision Table)
-3. **Dispatch via Agent tool** — write a clear, specific task prompt
-4. **Report results** — summarize what the subagent(s) found or did
+1. Parse the user's task into subtasks
+2. Choose agent type(s) per the decision table
+3. Dispatch via Agent tool with a clear, scoped prompt
+4. Synthesize and report results
 
 ## Agent Selection
 
-### Step 1: Check for a specialized plugin agent
+First, scan the Agent tool's `subagent_type` list for a **plugin specialist** matching the task's language, framework, or domain. Plugin agents are preferred when available. Otherwise, fall back to:
 
-Before using a generic agent, scan the Agent tool's available `subagent_type` list for a **domain-specific match**. Plugin agents (e.g. `plugin-name:agent-name`) are specialists — prefer them when the task falls squarely in their domain.
-
-**Selection logic:**
-1. Identify the task's **language, framework, or domain** (e.g. TypeScript, Kubernetes, security audit)
-2. Scan available agent types for a specialist that matches (e.g. `plugin-name:typescript-pro`, `plugin-name:kubernetes-specialist`)
-3. If a specialist exists → use it via `subagent_type: "plugin-name:agent-name"`
-4. If no specialist matches → fall back to custom agents below
-
-### Step 2: Fall back to custom agents
-
-| Task Type | Agent Type | Model | Why |
-|-----------|-----------|-------|-----|
+| Task Type | Agent Type | Model | Notes |
+|-----------|-----------|-------|-------|
 | Code review | code-reviewer | sonnet | Read-only, quality-focused |
-| Bug investigation | debugger | inherit | Needs edit access for fixes |
-| Research / exploration | researcher | haiku | Fast, read-only |
+| Research / exploration | researcher | sonnet | Needs depth for complex analysis |
+| Bug investigation | debugger | inherit | May need edit access for fixes |
 | Code implementation | implementer | inherit | Needs write access |
 | Write tests | test-writer | inherit | Needs write access |
-| General / unclear | general-purpose | inherit | Full capability |
+| Simple lookup / summary | general-purpose | haiku | Only for trivial, fast tasks |
 
-## Parallel Dispatch
+Use `haiku` only for simple, well-scoped lookups (e.g. "find which file defines X"). Default to `sonnet` for anything requiring judgment or synthesis.
 
-If the task has **independent subtasks**, dispatch multiple subagents in parallel:
+## Parallel vs Sequential Dispatch
 
-```
-Task: "Review auth module and write tests for the API"
--> Dispatch code-reviewer for auth module (parallel)
--> Dispatch test-writer for API tests (parallel)
--> Synthesize results when both complete
-```
-
-If subtasks are **dependent**, dispatch sequentially:
+Dispatch in **parallel** when subtasks are independent:
 
 ```
-Task: "Find the bug in auth, then fix it"
--> Dispatch researcher to investigate (first)
--> Dispatch debugger with findings to fix (second)
+"Review auth module and write tests for the API"
+-> code-reviewer for auth module  (parallel)
+-> test-writer for API tests      (parallel)
+-> Synthesize when both complete
 ```
+
+Dispatch **sequentially** when outputs feed into the next step:
+
+```
+"Find the bug in auth, then fix it"
+-> researcher to investigate  (first)
+-> debugger with findings     (second, using first result)
+```
+
+Limit concurrent subagents to 3-4 — each consumes tokens and context, and results get harder to synthesize beyond that. For larger tasks, batch into waves.
+
+## Background Dispatch
+
+Set `run_in_background: true` when:
+- You are dispatching 2+ agents and can continue useful work while they run
+- The user does not need immediate results from a particular agent
+- A task is long-running (large codebase scans, multi-file implementations)
+
+This keeps you unblocked to dispatch more agents or prepare synthesis work.
+
+## Worktree Isolation
+
+Set `isolation: "worktree"` when a subagent will edit files that could conflict with other subagents or with your own ongoing work. Typical use: dispatching multiple implementers that touch overlapping directories. Read-only agents (reviewers, researchers) generally do not need isolation.
 
 ## Task Prompt Guidelines
 
-Write specific prompts for each subagent. Include:
-- **What** to do (specific files, modules, or scope)
-- **Context** the subagent needs (error messages, requirements, constraints)
-- **Expected output** (report format, deliverables)
+Each subagent prompt should include:
+- **Scope**: specific files, modules, or directories to target
+- **Context**: error messages, constraints, relevant architecture details
+- **Deliverable**: what to return (fix, report with severity, list of findings, etc.)
 
 Bad: "Review the code"
-Good: "Review src/auth/ for security vulnerabilities. Focus on token handling and session management. The app uses JWT in httpOnly cookies. Report issues with severity ratings."
+Good: "Review src/auth/ for security vulnerabilities, focusing on token handling and session management. The app uses JWT in httpOnly cookies. Return issues with severity ratings."
+
+## Error Handling
+
+If a subagent returns incomplete or low-quality results, retry with a narrower scope or more specific prompt. If a `haiku` agent lacks depth, re-dispatch with `sonnet`. Do not silently accept poor results.
+
+## Synthesizing Results
+
+When multiple subagents return:
+- Merge complementary findings into a unified report
+- If findings conflict, note the disagreement and recommend which to trust based on evidence quality
+- Keep the synthesis concise — the user wants conclusions, not a transcript
 
 ## Red Flags
 
 | Thought | Reality |
 |---------|---------|
-| "I'll just do this myself quickly" | NO. Dispatch a subagent. |
-| "This is too simple for a subagent" | The user asked for subagent delegation. Use it. |
-| "Let me explore first, then dispatch" | Dispatch the exploration to a researcher subagent. |
-
-## Response Format
-
-1. Announce which subagent(s) you're dispatching and why
-2. Dispatch via Agent tool
-3. After completion, provide a brief synthesis of results
+| "I'll just do this myself quickly" | Dispatch a subagent. |
+| "This is too simple for a subagent" | The user asked for delegation. Use it. |
+| "Let me explore first, then dispatch" | Dispatch the exploration to a researcher. |

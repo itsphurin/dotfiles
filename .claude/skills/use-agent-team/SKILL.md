@@ -1,87 +1,112 @@
 ---
 name: use-agent-team
-description: Force creating an agent team to handle the given task. Spawns multiple Claude Code instances that coordinate via shared task list and direct messaging. Use for complex work requiring inter-agent collaboration.
+description: Spawn a coordinated team of background agents that work simultaneously and communicate with each other. Each teammate runs independently with designated file ownership. Use when the user explicitly requests a team, wants multi-angle review by separate specialists, needs coordinated parallel implementation across distinct parts of a codebase, or has N independent targets to process in parallel. Not for single-delegation tasks — use /use-subagent for those.
 ---
 
-# Use Agent Team — Force Agent Team Creation
+# Use Agent Team — Parallel Agent Coordination
 
-## Overview
+**You are the team lead. Do not do the work yourself — spawn teammates and coordinate.**
 
-**Create an agent team for this task. Do not use subagents or do the work yourself.**
+## How It Works
 
-When this skill is active, you MUST use TeamCreate to set up a coordinated team of Claude Code instances. You are the team lead.
+Teammates are spawned via the `Agent` tool with `run_in_background: true`. Each runs as an independent Claude Code instance with no access to your conversation, so every spawn prompt must be self-contained.
 
-## Prerequisites
+- **Spawn**: `Agent` with `run_in_background: true` for each teammate.
+- **Coordinate**: `SendMessage` to give guidance, redirect, or unblock running teammates.
+- **Track**: Task list to monitor progress and completion.
 
-Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in env (already configured in settings.json).
+## Steps
 
-## Rules
+1. Parse the user's task and design the team (2-5 teammates).
+2. Announce the team structure before spawning.
+3. Spawn all teammates with detailed, self-contained prompts.
+4. Monitor progress. Use `SendMessage` to course-correct if needed.
+5. Wait for all to complete, then synthesize results.
 
-1. **Parse the task** from the user's message after `/use-agent-team`
-2. **Design the team** — decide roles and number of teammates (3-5 is ideal)
-3. **Create the team** via TeamCreate
-4. **Assign tasks** with clear, specific prompts
-5. **Coordinate** — monitor progress, synthesize results, handle conflicts
-6. **Clean up** — shut down teammates and clean up when done
+## File Ownership
+
+Assign each teammate distinct files or directories. Two teammates editing the same file causes merge conflicts and wasted work. When designing prompts, explicitly state which files each teammate may edit vs. read-only. Also specify which directories they may create new files in.
+
+**When overlap is unavoidable:**
+- If the shared file is central to the task (e.g., a config file both teammates need to modify), use **sequential execution**: spawn one first, wait for completion, then spawn the next with the updated file state.
+- If the overlap is incidental (e.g., both need to add an import to an index file), use `isolation: "worktree"` on each teammate. After completion, verify changes merge cleanly and resolve any conflicts yourself.
+
+**Content migration** (moving code from one teammate's file to another's): Coordinate in the spawn prompts. Tell the source teammate to remove the code, and the destination teammate to add it. Both prompts must reference the same content to avoid duplication or omission.
+
+## Spawn Prompt Guidelines
+
+Each teammate's prompt should include:
+- **Repo path** and relevant file paths they own
+- **Background context** sufficient to work independently (they cannot see your conversation)
+- **Scoped goal** with concrete deliverables
+- **File boundaries**: which files to edit, which to read-only, which directories for new files
+- **Constraints**: what not to change, style conventions, patterns to follow
+
+## Model and Agent Selection
+
+- `sonnet` for reviewers and researchers (judgment-heavy, read-only)
+- `inherit` for implementers and debuggers (needs write access)
+- `haiku` only for trivial lookups
+
+Check the Agent tool's `subagent_type` list for domain-specific plugin agents — prefer them when they match the task domain. Read-only teammates (reviewers, researchers) do not need `isolation: "worktree"`.
 
 ## Team Design Patterns
 
-### Code Review Team (3 teammates)
-- **Security reviewer**: focus on vulnerabilities, auth, input validation
-- **Performance reviewer**: focus on efficiency, resource usage, scaling
-- **Quality reviewer**: focus on readability, patterns, test coverage
+### Fan-Out Team (N Parallel Workers)
+The most common pattern. Each teammate does the same type of work on a different target.
+- Examples: improving N skill files, reviewing N packages, migrating N modules
+- Each teammate owns one target (file or directory)
+- Minimal coordination needed — spawn all at once, collect results
+- Ensure teammates follow consistent conventions by including style guidance in each prompt
 
-### Feature Implementation Team (3-4 teammates)
-- **Architect**: plan the approach, define interfaces (require plan approval)
-- **Frontend implementer**: UI/component work
-- **Backend implementer**: API/logic work
-- **Test writer**: tests for all new code
+### Code Review Team
+- **Security reviewer**: vulnerabilities, auth, input validation
+- **Performance reviewer**: hot paths, resource usage, scaling
+- **Quality reviewer**: readability, patterns, test coverage
 
-### Investigation Team (3-5 teammates)
-- **Hypothesis A**: investigate one possible cause
-- **Hypothesis B**: investigate alternative cause
-- **Devil's advocate**: challenge other teammates' findings
+### Feature Implementation Team
+- **Architect**: plan approach, define interfaces — other teammates wait for this output
+- **Frontend implementer**: owns UI files
+- **Backend implementer**: owns API/service files
+- **Test writer**: owns test files — starts after implementers scaffold
 
-### Research Team (3 teammates)
-- **Codebase analyst**: explore internal code
-- **Documentation researcher**: check docs, READMEs, comments
-- **External researcher**: search web for patterns, libraries, solutions
+### Investigation Team
+- **Hypothesis A**: investigate one possible root cause
+- **Hypothesis B**: investigate an alternative cause
+- **Synthesizer**: review both findings, challenge assumptions, propose conclusion
 
-## Plugin-Aware Agent Selection
+## Coordination Protocol
 
-When spawning teammates, scan the Agent tool's available `subagent_type` list for **domain-specific plugin agents** (e.g. `plugin-name:agent-name`). Plugin agents are specialists — use them as teammates when the task matches their domain.
+- After spawning, periodically check task list status.
+- Use `SendMessage` when a teammate needs redirection, additional context, or when another teammate's output affects their work.
+- If a teammate gets stuck, send corrective guidance rather than terminating.
+- For sequential dependencies (e.g., architect before implementers), spawn the first, wait for completion, then spawn the rest with the first teammate's output in their prompts.
 
-For example, instead of a generic "Backend implementer" teammate, spawn one using a plugin's Python specialist if the backend is Python. Instead of a generic "Security reviewer", use a plugin security specialist if available. Check the Agent tool's available `subagent_type` list for exact names (format: `plugin-name:agent-name`).
+## Handling Failures
 
-**Rule**: Always check available plugin agents first. Use them as teammate agent types when they match the task domain. Fall back to custom or built-in agents for general tasks.
+If a teammate completes but produces incorrect or incomplete output, spawn a replacement with the original prompt plus a description of what went wrong. Do not fix it yourself — you are the coordinator. If downstream teammates depend on the failed output, wait for the replacement before spawning them.
 
-## Task Assignment Guidelines
+## Resolving Disagreements
 
-Each teammate should:
-- Own **different files** (avoid edit conflicts)
-- Have **5-6 tasks** each for productivity
-- Receive **enough context** in their spawn prompt (teammates don't inherit your conversation)
+When teammates produce conflicting recommendations:
+1. **Factual conflicts**: verify against the codebase and adopt the correct position.
+2. **Judgment calls**: weigh by assigned expertise (e.g., a security reviewer's stance on auth trumps a performance reviewer's). Present both perspectives and your recommendation to the user for the final call.
+3. Never silently discard a teammate's findings — if you override, state why in the final report.
 
-## Coordination Rules
+## Cleanup
 
-- Wait for teammates to finish before synthesizing
-- If a teammate gets stuck, message them with guidance or redirect
-- Use plan approval for risky changes
-- Monitor via Shift+Down (in-process) or split panes
+Once all teammates finish:
+1. Review each output for completeness and conflicts.
+2. If using worktree isolation, verify changes merge cleanly.
+3. Check cross-teammate consistency (e.g., did parallel workers follow the same patterns?).
+4. Synthesize into a concise final report for the user.
+5. Report any unresolved issues needing manual attention.
 
 ## Red Flags
 
-| Thought | Reality |
-|---------|---------|
-| "I'll just use a subagent instead" | NO. The user asked for agent team. Create one. |
-| "This doesn't need a team" | The user wants team coordination. Create one. |
-| "Let me do some of the work myself" | Delegate everything to teammates. You coordinate. |
-| "One teammate is enough" | Minimum 2 teammates. Otherwise use subagent. |
-
-## Response Format
-
-1. Announce the team structure you're creating
-2. Create the team and spawn teammates
-3. Monitor and coordinate until completion
-4. Synthesize all results into a final report
-5. Clean up the team
+| Thought | Correction |
+|---------|------------|
+| "I'll just do it myself with subagents" | The user asked for a team. Spawn teammates. |
+| "This task is too small for a team" | If the task is a single file and single concern, tell the user a team adds overhead and offer a subagent instead. Only force a team if there are genuinely independent subtasks. |
+| "One teammate can handle everything" | Split the work — the point is parallel execution. |
+| "Two teammates will edit the same file" | Sequence them or use `isolation: "worktree"`. |

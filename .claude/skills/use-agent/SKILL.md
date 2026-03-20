@@ -1,63 +1,65 @@
 ---
 name: use-agent
-description: Automatically choose the best delegation strategy (subagent or agent team) for the given task. Analyzes task complexity, parallelism needs, and inter-agent communication requirements to pick the optimal approach.
+description: Delegate any task using subagents or agent teams. Use this when asked to research, implement, review, debug, refactor, or handle multi-step work. Picks the cheapest effective strategy — subagent by default, team only when parallelism or cross-cutting coordination is genuinely needed.
 ---
 
 # Use Agent — Smart Delegation Router
 
-## Overview
-
-**Analyze the task and automatically choose between subagent(s) or an agent team.**
-
-You are a delegation router. Evaluate the task, pick the best strategy, then execute it. Never do the work yourself.
+Evaluate the task, pick the best delegation strategy, then invoke it via the Skill tool. Never do the work yourself.
 
 ## Decision Framework
 
-Evaluate the task against these criteria:
+**Default to subagent.** Subagents are 3-5x cheaper and faster than agent teams. Only escalate to a team when the task genuinely requires parallel tracks or inter-agent discussion.
 
 ### Use SUBAGENT when:
-- Task is **focused and self-contained** (single concern)
-- No **inter-agent communication** needed
-- Work is **sequential** or has few parallel paths
-- You need a **quick, focused result** (research, review, single fix)
-- Task scope is **small to medium**
-- Only the **result matters**, not the process
+- Task is focused and self-contained (single concern)
+- No inter-agent communication needed
+- Work is sequential or lightly parallel
+- You need a quick, targeted result (research, review, single fix, small feature)
+- Only the result matters, not cross-pollination of ideas
 
 ### Use AGENT TEAM when:
-- Task has **3+ independent parallel tracks**
-- Teammates need to **share findings and challenge each other**
-- Work spans **multiple layers** (frontend + backend + tests)
-- Task benefits from **competing hypotheses** (debugging)
-- Task is **large and complex** (feature implementation, major refactor)
-- **Coordination and discussion** between workers adds value
-
-### Plugin-Aware Agent Selection
-
-Before defaulting to custom agents, scan the Agent tool's available `subagent_type` list for **domain-specific plugin agents** (e.g. `plugin-name:agent-name`). Plugin agents are specialists — prefer them when the task matches their domain (language, framework, infrastructure, etc.). If no specialist matches, fall back to custom agents.
+- Task has 3+ truly independent parallel tracks
+- Teammates need to share findings or challenge each other's reasoning
+- Work spans multiple layers that must stay coordinated (frontend + backend + tests)
+- Task benefits from competing hypotheses (complex debugging)
+- The coordination overhead is justified by the complexity
 
 ### Quick Decision Table
 
 | Signal | Strategy |
 |--------|----------|
-| "review this file/PR" | Subagent (code-reviewer, or plugin specialist if domain-specific) |
-| "fix this bug" | Subagent (debugger, or plugin specialist for the language/framework) |
-| "research X" | Subagent (researcher, or plugin research agent) |
-| "implement this small feature" | Subagent (implementer, or plugin language specialist) |
-| "review from multiple angles" | Agent Team (review team) |
-| "build this feature across frontend/backend" | Agent Team (implementation team, using plugin specialists per layer) |
-| "investigate, could be several causes" | Agent Team (investigation team) |
-| "refactor these 4 modules" | Agent Team (parallel workers, using plugin language specialists) |
-| "research multiple topics and synthesize" | Agent Team (research team) |
+| "review this file/PR" | Subagent |
+| "fix this bug" | Subagent |
+| "research X" | Subagent |
+| "implement this small feature" | Subagent |
+| "refactor a single module" | Subagent |
+| "review from 3+ angles (security, perf, quality)" | Agent Team |
+| "build feature across frontend/backend" | Agent Team |
+| "investigate with 3+ independent hypotheses" | Agent Team |
+| "refactor 4+ independent modules in parallel" | Agent Team |
+
+### Hybrid Workflow (Research then Implement)
+
+Some tasks need sequential phases — e.g., research a codebase first, then implement based on findings. Handle these as chained subagent calls: dispatch a researcher subagent, wait for results, then dispatch an implementer subagent with those results as context. Only upgrade to a team if the implementation phase itself has parallel tracks.
+
+### Plugin-Aware Selection
+
+Before creating custom agents, check the Agent tool's `subagent_type` list for domain-specific plugin agents. Prefer plugin specialists when the task matches their domain; fall back to custom agents otherwise.
 
 ## Execution
 
 After deciding:
 
-1. **Announce your decision**: "This task is best handled by [subagent/agent team] because [reason]."
-2. **Execute the chosen strategy**:
-   - If **subagent**: follow the /use-subagent skill behavior
-   - If **agent team**: follow the /use-agent-team skill behavior
-3. **Synthesize results** when delegation completes
+1. **Announce your decision**: "Using [subagent/agent team] because [one-line reason]."
+2. **Invoke via Skill tool**:
+   - Subagent: invoke the `/use-subagent` skill
+   - Agent Team: invoke the `/use-agent-team` skill
+3. **Synthesize results** when delegation completes.
+
+### Background vs Foreground Dispatch
+
+For long-running tasks where the user does not need to wait, dispatch in the background. Prefer background when the task is exploratory or the user is continuing other work. Use foreground when the user is blocked on the result.
 
 ## Override
 
@@ -65,8 +67,9 @@ If the user disagrees with your choice, switch immediately without argument.
 
 ## Red Flags
 
-| Thought | Reality |
-|---------|---------|
-| "I'll just do this myself" | NO. Delegate to subagent or team. |
+| Thought | Correction |
+|---------|------------|
+| "I'll just do this myself" | Delegate. Always. |
+| "This might need a team" | Start with a subagent. Escalate only if complexity demands it. |
 | "Neither approach fits" | One always fits. Subagent is the safe default. |
 | "Let me explore first" | Dispatch a researcher subagent to explore. |

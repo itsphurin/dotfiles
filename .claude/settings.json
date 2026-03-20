@@ -2,6 +2,52 @@
   "permissions": {
     "defaultMode": "plan"
   },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "effortLevel": "high",
+  "voiceEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
+  "enableAllProjectMcpServers": true,
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "impeccable@impeccable": true,
+    "voltagent-biz@voltagent-subagents": true,
+    "voltagent-core-dev@voltagent-subagents": true,
+    "voltagent-data-ai@voltagent-subagents": true,
+    "voltagent-dev-exp@voltagent-subagents": true,
+    "voltagent-domains@voltagent-subagents": true,
+    "voltagent-infra@voltagent-subagents": true,
+    "voltagent-lang@voltagent-subagents": true,
+    "voltagent-meta@voltagent-subagents": true,
+    "voltagent-qa-sec@voltagent-subagents": true,
+    "voltagent-research@voltagent-subagents": true
+  },
+  "extraKnownMarketplaces": {
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "n8n-skills": {
+      "source": {
+        "source": "github",
+        "repo": "czlonkowski/n8n-skills"
+      }
+    },
+    "voltagent-subagents": {
+      "source": {
+        "source": "github",
+        "repo": "VoltAgent/awesome-claude-code-subagents"
+      }
+    }
+  },
   "hooks": {
     "Notification": [
       {
@@ -13,14 +59,5 @@
         ]
       }
     ]
-  },
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "voltagent-data-ai@voltagent-subagents": true,
-    "code-simplifier@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true
-  },
-  "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  }
 }

@@ -4,7 +4,7 @@
 - clean: ["~"]
 - link:
     ~/.zshrc: ./zsh/zshrc
-    ~/.zlogout: ./zsh/zlogout
+    # ~/.zlogout: ./zsh/zlogout
     ~/.zshenv: ./zsh/zshenv
     ~/.vimrc: ./.vimrc
     ~/.tmux.conf: ./tmux/tmux.conf
@@ -29,67 +29,70 @@
     ~/.claude/skills:
       create: true
       path: ./.claude/skills
+    ~/.claude/agents:
+      create: true
+      path: ./.claude/agents
     # Linux stuffs
     ~/.config/hypr:
       create: true
       path: ./config/hypr
-    ~/.config/ags:
-      create: true
-      path: ./config/ags
-    ~/.config/ags.v1:
-      create: true
-      path: ./config/ags.v1
-    ~/.config/pipewire:
-      create: true
-      path: ./config/pipewire
-    ~/.config/qt5ct:
-      create: true
-      path: ./config/qt5ct
-    ~/.config/mpv:
-      create: true
-      path: ./config/mpv
-    ~/.config/fuzzel:
-      create: true
-      path: ./config/fuzzel
-    ~/.config/foot:
-      create: true
-      path: ./config/foot
-    ~/.config/fontconfig:
-      create: true
-      path: ./config/fontconfig
-    ~/.config/anyrun:
-      create: true
-      path: ./config/anyrun
-    ~/.config/fcitx5:
-      create: true
-      path: ./config/fcitx5
-    ~/.config/starship.toml: ./config/starship.toml
-    ~/.config/ranger:
-      create: true
-      path: ./config/ranger
+    # ~/.config/ags:
+    #   create: true
+    #   path: ./config/ags
+    # ~/.config/ags.v1:
+    #   create: true
+    #   path: ./config/ags.v1
+    # ~/.config/pipewire:
+    #   create: true
+    #   path: ./config/pipewire
+    # ~/.config/qt5ct:
+    #   create: true
+    #   path: ./config/qt5ct
+    # ~/.config/mpv:
+    #   create: true
+    #   path: ./config/mpv
+    # ~/.config/fuzzel:
+    #   create: true
+    #   path: ./config/fuzzel
+    # ~/.config/foot:
+    #   create: true
+    #   path: ./config/foot
+    # ~/.config/fontconfig:
+    #   create: true
+    #   path: ./config/fontconfig
+    # ~/.config/anyrun:
+    #   create: true
+    #   path: ./config/anyrun
+    # ~/.config/fcitx5:
+    #   create: true
+    #   path: ./config/fcitx5
+    # ~/.config/starship.toml: ./config/starship.toml
+    # ~/.config/ranger:
+    #   create: true
+    #   path: ./config/ranger
 
-- create:
-    - ~/Works
-    - ~/packages # for extract packages which need to be built / manual installed
-- create:
-    ~/vpns:
-      mode: 0700
-- create:
-    ~/.ssh/keys:
-      mode: 0700
-    ~/.ssh/cm_socket:
-      mode: 0700
-    ~/.cache/logs:
-      mode: 0744
+# - create:
+#     - ~/Works
+#     - ~/packages # for extract packages which need to be built / manual installed
+# - create:
+#     ~/vpns:
+#       mode: 0700
+# - create:
+#     ~/.ssh/keys:
+#       mode: 0700
+#     ~/.ssh/cm_socket:
+#       mode: 0700
+#     ~/.cache/logs:
+#       mode: 0744
 - shell:
     - command: git submodule update --init
       stdin: true
       stdout: true
       stderr: true
-    - command: ./zsh/setup.sh
-      stdin: true
-      stdout: true
-      stderr: true
+    # - command: ./zsh/setup.sh
+    #   stdin: true
+    #   stdout: true
+    #   stderr: true
     - command: ./omz/setup.zsh
       stdin: true
       stdout: true
@@ -102,22 +105,22 @@
       stdin: true
       stdout: true
       stderr: true
-    - command: ./arch/builds/setup.zsh
-      stdin: true
-      stdout: true
-      stderr: true
+    # - command: ./arch/builds/setup.zsh
+    #   stdin: true
+    #   stdout: true
+    #   stderr: true
     - command: ./macos/setup.zsh
       stdin: true
       stdout: true
       stderr: true
-    - command: ./node/setup.zsh
-      stdin: true
-      stdout: true
-      stderr: true
-    - command: touch ~/.stCommitMsg
-      stdin: true
-      stdout: true
-      stderr: true
+    # - command: ./node/setup.zsh
+    #   stdin: true
+    #   stdout: true
+    #   stderr: true
+    # - command: touch ~/.stCommitMsg
+    #   stdin: true
+    #   stdout: true
+    #   stderr: true
 # NOTE: take a look /etc/os-release to seperate distros
 # See more: [reddit](https://www.reddit.com/r/linux4noobs/comments/k6t9uw/how_does_neofetch_know_what_distro_you_are_using/?rdt=40816)
 # Solution: https://unix.stackexchange.com/a/432819

@@ -10,3 +10,4 @@ zsh/scripts/custom
 **/.env.*.local
 **/.env.local
 /.claude/settings.local.json
+.mcp.json

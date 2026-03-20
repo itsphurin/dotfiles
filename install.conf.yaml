@@ -32,6 +32,9 @@
     ~/.claude/agents:
       create: true
       path: ./.claude/agents
+    ~/.claude/commands:
+      create: true
+      path: ./.claude/commands
     # Linux stuffs
     ~/.config/hypr:
       create: true

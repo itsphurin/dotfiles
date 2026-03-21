@@ -21,7 +21,7 @@ Evaluate the task, pick the best delegation strategy, then invoke it via the Ski
 - Workers need to **share findings and challenge each other** (e.g., competing hypotheses)
 - Task benefits from a **shared task list** where teammates self-claim work
 - Work spans **multiple layers** that need coordination (frontend + backend + tests)
-- Task has **sequential dependencies** between workers (architect → implementers → testers)
+- Task has **sequential dependencies with ongoing coordination** (architect plans → implementers build → testers verify, with feedback loops between them)
 - **Discussion and collaboration** between workers adds value
 
 ### Quick Decision Table
@@ -41,7 +41,7 @@ Evaluate the task, pick the best delegation strategy, then invoke it via the Ski
 
 ### Hybrid Workflow (Research then Implement)
 
-Some tasks need sequential phases. Handle as chained sub-agent calls: dispatch a researcher, wait for results, then dispatch an implementer with those results. Only upgrade to a team if the implementation phase needs parallel coordination.
+Some tasks need sequential phases with a simple result handoff (no ongoing discussion). Handle as chained sub-agent calls: dispatch a researcher, wait for results, then dispatch an implementer with those results. Upgrade to a team only if workers need to communicate back and forth during execution.
 
 ### Plugin-Aware Selection
 

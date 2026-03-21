@@ -1,6 +1,6 @@
 ---
 name: use-agent
-description: Delegate any task using subagents or agent teams. Use this when asked to research, implement, review, debug, refactor, or handle multi-step work. Picks the cheapest effective strategy — subagent by default, team only when parallelism or cross-cutting coordination is genuinely needed.
+description: Delegate any task using sub-agents or agent teams. Use this when asked to research, implement, review, debug, refactor, or handle multi-step work. Picks the right strategy — sub-agents (Agent tool) for focused fire-and-forget work, agent teams (TeamCreate) when workers need to coordinate and communicate with each other.
 ---
 
 # Use Agent — Smart Delegation Router
@@ -9,57 +9,53 @@ Evaluate the task, pick the best delegation strategy, then invoke it via the Ski
 
 ## Decision Framework
 
-**Default to subagent.** Subagents are 3-5x cheaper and faster than agent teams. Only escalate to a team when the task genuinely requires parallel tracks or inter-agent discussion.
+**Choose based on the task, not a default.** Sub-agents are cheaper and faster but agent teams enable collaboration that sub-agents can't. Pick the one that fits the task's actual needs — don't force one over the other.
 
-### Use SUBAGENT when:
+### Sub-agents (`Agent` tool) — when:
 - Task is focused and self-contained (single concern)
-- No inter-agent communication needed
+- Workers don't need to talk to each other — only report results back to you
 - Work is sequential or lightly parallel
 - You need a quick, targeted result (research, review, single fix, small feature)
-- Only the result matters, not cross-pollination of ideas
 
-### Use AGENT TEAM when:
-- Task has 3+ truly independent parallel tracks
-- Teammates need to share findings or challenge each other's reasoning
-- Work spans multiple layers that must stay coordinated (frontend + backend + tests)
-- Task benefits from competing hypotheses (complex debugging)
-- The coordination overhead is justified by the complexity
+### Agent teams (`TeamCreate`) — when:
+- Workers need to **share findings and challenge each other** (e.g., competing hypotheses)
+- Task benefits from a **shared task list** where teammates self-claim work
+- Work spans **multiple layers** that need coordination (frontend + backend + tests)
+- Task has **sequential dependencies** between workers (architect → implementers → testers)
+- **Discussion and collaboration** between workers adds value
 
 ### Quick Decision Table
 
 | Signal | Strategy |
 |--------|----------|
-| "review this file/PR" | Subagent |
-| "fix this bug" | Subagent |
-| "research X" | Subagent |
-| "implement this small feature" | Subagent |
-| "refactor a single module" | Subagent |
+| "review this file/PR" | Sub-agent |
+| "fix this bug" | Sub-agent |
+| "research X" | Sub-agent |
+| "implement this small feature" | Sub-agent |
+| "refactor a single module" | Sub-agent |
 | "review from 3+ angles (security, perf, quality)" | Agent Team |
-| "build feature across frontend/backend" | Agent Team |
-| "investigate with 3+ independent hypotheses" | Agent Team |
-| "refactor 4+ independent modules in parallel" | Agent Team |
+| "build feature across frontend/backend/tests" | Agent Team |
+| "investigate with competing hypotheses" | Agent Team |
+| "refactor 4+ modules in parallel with coordination" | Agent Team |
+| "improve these N skills/files in parallel" | Agent Team (fan-out) |
 
 ### Hybrid Workflow (Research then Implement)
 
-Some tasks need sequential phases — e.g., research a codebase first, then implement based on findings. Handle these as chained subagent calls: dispatch a researcher subagent, wait for results, then dispatch an implementer subagent with those results as context. Only upgrade to a team if the implementation phase itself has parallel tracks.
+Some tasks need sequential phases. Handle as chained sub-agent calls: dispatch a researcher, wait for results, then dispatch an implementer with those results. Only upgrade to a team if the implementation phase needs parallel coordination.
 
 ### Plugin-Aware Selection
 
-Before creating custom agents, check the Agent tool's `subagent_type` list for domain-specific plugin agents. Prefer plugin specialists when the task matches their domain; fall back to custom agents otherwise.
+Check the Agent tool's `subagent_type` list for domain-specific plugin agents. Prefer plugin specialists when they match the task domain.
 
 ## Execution
 
 After deciding:
 
-1. **Announce your decision**: "Using [subagent/agent team] because [one-line reason]."
+1. **Announce your decision**: "Using [sub-agent/agent team] because [one-line reason]."
 2. **Invoke via Skill tool**:
-   - Subagent: invoke the `/use-subagent` skill
+   - Sub-agent: invoke the `/use-subagent` skill
    - Agent Team: invoke the `/use-agent-team` skill
 3. **Synthesize results** when delegation completes.
-
-### Background vs Foreground Dispatch
-
-For long-running tasks where the user does not need to wait, dispatch in the background. Prefer background when the task is exploratory or the user is continuing other work. Use foreground when the user is blocked on the result.
 
 ## Override
 
@@ -70,6 +66,6 @@ If the user disagrees with your choice, switch immediately without argument.
 | Thought | Correction |
 |---------|------------|
 | "I'll just do this myself" | Delegate. Always. |
-| "This might need a team" | Start with a subagent. Escalate only if complexity demands it. |
-| "Neither approach fits" | One always fits. Subagent is the safe default. |
-| "Let me explore first" | Dispatch a researcher subagent to explore. |
+| "This might need a team" | Check: do workers need to talk to each other, share a task list, or challenge each other's findings? If yes → team. If no → sub-agent. |
+| "Neither approach fits" | Re-read the decision criteria. One always fits — decide based on the task, not a default. |
+| "Let me explore first" | Dispatch a researcher sub-agent to explore. |

@@ -7,6 +7,18 @@
   },
   "enableAllProjectMcpServers": true,
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Bash|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/env-guard.sh",
+            "statusMessage": "Checking for .env file access..."
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "hooks": [

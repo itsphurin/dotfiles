@@ -81,6 +81,7 @@ plugins=(
   kubectl
   vi-mode
   z
+  zsh-claudecode-completion
   zsh-syntax-highlighting
   # alias-finder # try `als` for self-explanation
   # aliases # all good shortcuts (e.g. `glola` `glods` `gf` `gl`)

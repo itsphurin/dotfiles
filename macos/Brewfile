@@ -1,3 +1,4 @@
+tap "arthur-ficial/tap"
 tap "cloudflare/cloudflare"
 tap "eth-p/software"
 tap "hashicorp/tap"
@@ -5,12 +6,14 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "sdkman/tap"
 tap "steipete/tap"
+# Simple, modern, secure file encryption
+brew "age"
 # In-depth attack surface mapping and asset discovery
 brew "amass"
+# Apple Intelligence from the command-line, with OpenAi-compatible API server
+brew "apfel"
 # GitOps Continuous Delivery for Kubernetes
 brew "argocd"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Emacs dependency management
@@ -43,6 +46,8 @@ brew "jupyterlab"
 brew "kind"
 # Tool to move from `docker-compose` to Kubernetes
 brew "kompose"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Apple Silicon Monitor Top written in Go Lang
@@ -71,6 +76,8 @@ brew "postgresql@17"
 brew "pwgen"
 # Python version management
 brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Python interface to Tcl/Tk
 brew "python-tk@3.13"
 # Search tool like grep and The Silver Searcher
@@ -81,6 +88,8 @@ brew "rust"
 brew "scrcpy"
 # SMART hard drive monitoring
 brew "smartmontools"
+# Editor of encrypted files
+brew "sops"
 # Command-line interface for https://speedtest.net bandwidth tests
 brew "speedtest-cli"
 # Cross-shell prompt for astronauts
@@ -93,6 +102,8 @@ brew "tldr"
 brew "tmuxinator"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
+brew "tree-sitter-cli"
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -101,6 +112,8 @@ brew "yq"
 brew "eth-p/software/bat-extras-batman"
 # Terraform
 brew "hashicorp/tap/terraform"
+# SDKMAN! the Software Development Kit Manager
+brew "sdkman/tap/sdkman-cli"
 # Android SDK component
 cask "android-platform-tools"
 # Memory training application
@@ -109,12 +122,8 @@ cask "anki"
 cask "appcleaner"
 # Chromium based browser
 cask "arc"
-# Integrated CAD, CAM, CAE, and PCB software
-cask "autodesk-fusion"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# SDKMAN! the Software Development Kit Manager
-brew "sdkman/tap/sdkman-cli"
 # Window manager that organizes desktop applications into predefined zones
 cask "bentobox"
 # Display management tool
@@ -155,6 +164,8 @@ cask "jordanbaird-ice"
 cask "keycastr"
 # GPU-based terminal emulator
 cask "kitty"
+# Kubernetes IDE
+cask "lens"
 # Discover, download, and run local LLMs
 cask "lm-studio"
 # WordPress local development tool by Flywheel
@@ -230,6 +241,7 @@ mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "PDFOptim", id: 621276561
 mas "Perplexity", id: 6714467650
+mas "Read.md", id: 6760943472
 mas "Redis Insight", id: 6446987963
 mas "Reeder", id: 6475002485
 mas "S3", id: 6447647340
@@ -264,7 +276,6 @@ vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
 vscode "foxundermoon.shell-format"
 vscode "gencer.html-slim-scss-css-class-completion"
-vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "golang.go"
 vscode "graphql.vscode-graphql"

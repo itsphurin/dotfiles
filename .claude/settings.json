@@ -3,7 +3,7 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "permissions": {
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "enableAllProjectMcpServers": true,
   "hooks": {
@@ -30,14 +30,16 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "node $HOME/.claude/hud/omc-hud.mjs"
+  },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "github@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
-    "supabase@claude-plugins-official": true,
     "document-skills@anthropic-agent-skills": true,
     "impeccable@impeccable": true,
     "skill-creator@claude-plugins-official": true,
@@ -65,11 +67,18 @@
       "autoUpdate": true
     }
   },
-  "effortLevel": "high",
-  "voiceEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
   "teammateMode": "tmux",
   "preferences": {
     "tmuxSplitPanes": true
+  },
+  "omcHud": {
+    "preset": "full",
+    "elements": {
+      "agentsFormat": "multiline",
+      "maxOutputLines": 4
+    }
   }
 }

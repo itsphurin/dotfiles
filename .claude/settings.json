@@ -5,6 +5,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "sonnet",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "PreToolUse": [
@@ -32,7 +33,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node $HOME/.claude/hud/omc-hud.mjs"
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
@@ -67,18 +68,13 @@
       "autoUpdate": true
     }
   },
+  "effortLevel": "high",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
   "teammateMode": "tmux",
   "preferences": {
     "tmuxSplitPanes": true
-  },
-  "omcHud": {
-    "preset": "full",
-    "elements": {
-      "agentsFormat": "multiline",
-      "maxOutputLines": 4
-    }
   }
 }

@@ -309,3 +309,12 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 [[ -n "$ZPROF" ]] && zprof
+
+export PATH=$PATH:/Users/phurin/.local/bin
+
+# bun completions
+[ -s "/Users/phurin/.oh-my-zsh/completions/_bun" ] && source "/Users/phurin/.oh-my-zsh/completions/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

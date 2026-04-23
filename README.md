@@ -1,67 +1,48 @@
-# :zap: Phurinut's dotfiles
+# dotfiles
 
-![OS](https://img.shields.io/badge/OS-macOS%20%7C%20Linux-lightgrey)
-![Shell](https://img.shields.io/badge/Shell-Zsh-blue)
-![Editor](https://img.shields.io/badge/Editor-Neovim-green)
-![Terminal](https://img.shields.io/badge/Terminal-Kitty-orange)
-![Multiplexer](https://img.shields.io/badge/Multiplexer-Tmux-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+![macOS](https://img.shields.io/badge/-macOS-000?logo=apple&logoColor=white)
+![Arch Linux](https://img.shields.io/badge/-Arch_Linux-1793D1?logo=archlinux&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Welcome to my personal dotfiles! This repository is the heart of my daily development workflow, optimized for speed, minimal context switching, and deep CLI productivity.
+Personal development environment managed with [Dotbot](https://github.com/anishathalye/dotbot).
 
-## 📸 Example Workflow
+## Preview
 
-Here's a glimpse of my daily development workflow using Kitty, Tmux, and Neovim seamlessly integrated.
+![Workflow](.github/assets/workflow-screenshot.gif)
 
-![Showcase Image](.github/assets/workflow-screenshot.gif)
+## Stack
 
-## :sparkles: **Key Features**
+| Category | Tool |
+|----------|------|
+| Shell | zsh + oh-my-zsh |
+| Prompt | starship |
+| Editor | neovim (Lua config) |
+| Terminal | kitty |
+| Multiplexer | tmux + tmux-resurrect |
 
-- 🖥️ **Terminal & Prompt**
-
-  - `starship` for blazing-fast and beautiful command prompt.
-  - Custom Powerline-style tmux status bar.
-  - `kitty` installer for use seamlessly across multiple OS.
-
-- 📚 **Editor**
-
-  - Fully customized `Neovim` with Lua config.
-  - Plugins for LSP, Treesitter, Telescope, and smooth scrolling.
-  - Intuitive key mappings for faster navigation and coding.
-
-- 📂 **Multiplexer**
-
-  - `tmux` + `tmux-resurrect` for session persistence and `tmuxinator` for sessioning across project folder.
-  - Custom `tmux` plugins for pane management and productivity.
-
-- ⚙️ **ZSH Enhancements**
-
-  - Oh-My-Zsh + Custom Plugins.
-  - Useful shell functions stored under `zsh/scripts` to automate daily repetitive tasks.
-  - Kubernetes KUBECONFIG switcher and Git workflow shortcuts.
-
-- 🐳 **Developer Utilities**
-  - Docker & Kubernetes helper scripts.
-  - Git alias shortcuts for safe and fast commits, logs, and rebase workflows.
-
-## 🚀 Philosophy
-
-> _“I believe that small optimizations in daily developer workflows compound into significant long-term productivity gains.”_
-
-## :pushpin: **How to use**
-
-1. Clone this repo to your machine
+## Install
 
 ```bash
-$ git clone --recursive git@github.com:itsphurin/dotfiles.git ~/dotfiles
+git clone --recursive git@github.com:itsphurin/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./install
 ```
 
-2. Go to dotfiles directory and execute the installer
+## Structure
 
-```bash
-$ cd ~/dotfiles && ./install
+```
+zsh/           # Shell config and scripts
+  scripts/     # Sourced utilities (git, k8s, brew helpers)
+  scripts/custom/  # Your custom scripts (auto-loaded)
+config/        # XDG configs (nvim, kitty, hypr, etc.)
+macos/         # Brewfile and macOS defaults
+arch/          # Arch Linux setup and package lists
+tmux/          # Tmux configuration
 ```
 
----
+## Customization
 
-📌 **Try it out or explore the scripts under `zsh/scripts` to find some hidden gems!**
+Add personal shell functions to `zsh/scripts/custom/*.sh` — they load automatically.
+
+## License
+
+[MIT](LICENSE)

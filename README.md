@@ -20,7 +20,6 @@ Here's a glimpse of my daily development workflow using Kitty, Tmux, and Neovim 
 - 🖥️ **Terminal & Prompt**
 
   - `starship` for blazing-fast and beautiful command prompt.
-  - Custom Powerline-style tmux status bar.
   - `kitty` installer for use seamlessly across multiple OS.
 
 - 📚 **Editor**
@@ -41,7 +40,6 @@ Here's a glimpse of my daily development workflow using Kitty, Tmux, and Neovim 
   - Kubernetes KUBECONFIG switcher and Git workflow shortcuts.
 
 - 🐳 **Developer Utilities**
-  - Docker & Kubernetes helper scripts.
   - Git alias shortcuts for safe and fast commits, logs, and rebase workflows.
 
 ## 🚀 Philosophy
@@ -64,4 +62,4 @@ $ cd ~/dotfiles && ./install
 
 ---
 
-📌 **Try it out or explore the scripts under `zsh/scripts` to find some hidden gems!**
+📌 **Try it out or explore the scripts under `zsh/scripts` to find some useful scripts!**

@@ -26,6 +26,8 @@ brew "cmake"
 brew "direnv"
 # Modern, maintained replacement for ls
 brew "eza"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -54,6 +56,8 @@ brew "lazygit"
 brew "mactop"
 # Mac App Store command-line interface
 brew "mas"
+# Remote terminal application
+brew "mosh"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
@@ -134,8 +138,6 @@ cask "blender"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Image, video and clipboard optimiser
-cask "clop"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software
@@ -218,7 +220,6 @@ cask "warp"
 cask "webstorm"
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Boom 3D", id: 1233048948
-mas "ClaudeUsageBattery", id: 6757597561
 mas "Clever Data Recovery", id: 431224317
 mas "ColorSlurp", id: 1287239339
 mas "CrystalFetch", id: 6454431289
@@ -228,6 +229,7 @@ mas "DevCleaner", id: 1388020431
 mas "Ebook Converter", id: 1081457679
 mas "Enchanted", id: 6474268307
 mas "Free Ruler", id: 1483172210
+mas "Goodnotes", id: 1444383602
 mas "Hand Mirror", id: 1502839586
 mas "JSON Peep", id: 1458969831
 mas "Keka", id: 470158793

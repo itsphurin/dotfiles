@@ -304,41 +304,41 @@ line2="🤖 ${C_MODEL}${omc_label}${R}"
 # Rate limit segments — always shown
 line2="${line2}${SEP}${rl_5h_seg} ${rl_7d_seg}"
 
-# Session total tokens — always shown
-line2="${line2}${SEP}${total_tok_seg}"
-
-# Session duration — always shown
-if [ -n "$session_dur" ]; then
-  line2="${line2}${SEP}🕐 ${C_LABEL}session:${R}${C_SESSION_VAL}${session_dur}${R}"
-else
-  line2="${line2}${SEP}🕐 ${C_LABEL}session:${R}${C_BAR_ETA}--${R}"
-fi
-
-# Agent name — always shown
-if [ -n "$agent_name" ]; then
-  line2="${line2}${SEP}🤝 ${C_LABEL}agent:${R}${C_SESSION_VAL}${agent_name}${R}"
-else
-  line2="${line2}${SEP}🤝 ${C_LABEL}agent:${R}${C_BAR_ETA}--${R}"
-fi
-
-# Skill / output style — always shown (skip only truly default labels)
-if [ -n "$skill_name" ] && [ "$skill_name" != "default" ] && [ "$skill_name" != "Default" ]; then
-  line2="${line2}${SEP}🎯 ${C_LABEL}skill:${R}${C_SESSION_VAL}${skill_name}${R}"
-else
-  line2="${line2}${SEP}🎯 ${C_LABEL}skill:${R}${C_BAR_ETA}--${R}"
-fi
-
 # Context bar — always shown
 line2="${line2}${SEP}${ctx_seg}"
 
-# Token counts — always shown
-line2="${line2}${SEP}${cost_seg}"
-
 # ---------------------------------------------------------------------------
-# Assemble LINE 3 — thinking effort
+# Assemble LINE 3 — effort + session usage
 # ---------------------------------------------------------------------------
 
 line3="${effort_seg}"
+
+# Cost — session cumulative
+line3="${line3}${SEP}${cost_seg}"
+
+# Session total tokens
+line3="${line3}${SEP}${total_tok_seg}"
+
+# Session duration
+if [ -n "$session_dur" ]; then
+  line3="${line3}${SEP}🕐 ${C_LABEL}session:${R}${C_SESSION_VAL}${session_dur}${R}"
+else
+  line3="${line3}${SEP}🕐 ${C_LABEL}session:${R}${C_BAR_ETA}--${R}"
+fi
+
+# Agent name
+if [ -n "$agent_name" ]; then
+  line3="${line3}${SEP}🤝 ${C_LABEL}agent:${R}${C_SESSION_VAL}${agent_name}${R}"
+else
+  line3="${line3}${SEP}🤝 ${C_LABEL}agent:${R}${C_BAR_ETA}--${R}"
+fi
+
+# Skill / output style (skip only truly default labels)
+if [ -n "$skill_name" ] && [ "$skill_name" != "default" ] && [ "$skill_name" != "Default" ]; then
+  line3="${line3}${SEP}🎯 ${C_LABEL}skill:${R}${C_SESSION_VAL}${skill_name}${R}"
+else
+  line3="${line3}${SEP}🎯 ${C_LABEL}skill:${R}${C_BAR_ETA}--${R}"
+fi
 
 # ---------------------------------------------------------------------------
 # Output

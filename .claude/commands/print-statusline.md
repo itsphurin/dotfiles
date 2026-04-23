@@ -1,5 +1,6 @@
 ---
 description: Render current status line with segment-by-segment explanation
+model: haiku
 ---
 
 Read `/Users/phurin/.claude/statusline-command.sh` and show me exactly what the current status line renders. Format the answer as:

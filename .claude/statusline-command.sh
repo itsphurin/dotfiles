@@ -208,9 +208,17 @@ fi
 # Session total token counts
 # ---------------------------------------------------------------------------
 
+fmt_si() {
+  awk -v n="$1" 'BEGIN {
+    if (n >= 1000000) printf "%.1fM", n/1000000
+    else if (n >= 1000) printf "%.1fk", n/1000
+    else printf "%d", n
+  }'
+}
+
 if [ "$total_in_tok" != "0" ] || [ "$total_out_tok" != "0" ]; then
-  total_in_fmt=$(numfmt --to=si "$total_in_tok")
-  total_out_fmt=$(numfmt --to=si "$total_out_tok")
+  total_in_fmt=$(fmt_si "$total_in_tok")
+  total_out_fmt=$(fmt_si "$total_out_tok")
   total_tok_seg="${C_LABEL}token:${R} 📥 ${FG_WHITE}in:${R}${FG_CYAN}${total_in_fmt}${R} 📤 ${FG_WHITE}out:${R}${FG_GREEN}${total_out_fmt}${R}"
 else
   total_tok_seg="${C_LABEL}token:${R} 📥 ${FG_WHITE}in:${R}${C_BAR_ETA}--${R} 📤 ${FG_WHITE}out:${R}${C_BAR_ETA}--${R}"

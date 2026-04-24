@@ -99,8 +99,7 @@ transcript=$(echo "$input"   | jq -r '.transcript_path // ""')
 model_id=$(echo "$input"     | jq -r '.model.id // ""')
 model_name=$(echo "$input"   | jq -r '.model.display_name // "Claude"')
 version=$(echo "$input"      | jq -r '.version // ""')
-agent_name=$(echo "$input"   | jq -r '.agent.name // ""')
-skill_name=$(echo "$input"   | jq -r '.output_style.name // ""')
+thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 vim_mode=$(echo "$input"     | jq -r '.vim.mode // ""')
 
 ctx_used=$(echo "$input"     | jq -r '.context_window.used_percentage // empty')
@@ -334,18 +333,18 @@ else
   line3="${line3}${SEP}🕐 ${C_LABEL}session:${R}${C_BAR_ETA}--${R}"
 fi
 
-# Agent name
-if [ -n "$agent_name" ]; then
-  line3="${line3}${SEP}🤝 ${C_LABEL}agent:${R}${C_SESSION_VAL}${agent_name}${R}"
+# Thinking status
+if [ "$thinking_enabled" = "true" ]; then
+  line3="${line3}${SEP}🧠 ${C_LABEL}thinking:${R}${FG_GREEN}on${R}"
 else
-  line3="${line3}${SEP}🤝 ${C_LABEL}agent:${R}${C_BAR_ETA}--${R}"
+  line3="${line3}${SEP}🧠 ${C_LABEL}thinking:${R}${C_BAR_ETA}off${R}"
 fi
 
-# Skill / output style (skip only truly default labels)
-if [ -n "$skill_name" ] && [ "$skill_name" != "default" ] && [ "$skill_name" != "Default" ]; then
-  line3="${line3}${SEP}🎯 ${C_LABEL}skill:${R}${C_SESSION_VAL}${skill_name}${R}"
+# Claude Code version
+if [ -n "$version" ]; then
+  line3="${line3}${SEP}📦 ${C_LABEL}v:${R}${C_SESSION_VAL}${version}${R}"
 else
-  line3="${line3}${SEP}🎯 ${C_LABEL}skill:${R}${C_BAR_ETA}--${R}"
+  line3="${line3}${SEP}📦 ${C_LABEL}v:${R}${C_BAR_ETA}--${R}"
 fi
 
 # ---------------------------------------------------------------------------

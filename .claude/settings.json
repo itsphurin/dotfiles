@@ -5,7 +5,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "sonnet",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "PreToolUse": [
@@ -68,12 +67,14 @@
       "autoUpdate": true
     }
   },
-  "effortLevel": "medium",
-  "tui": "fullscreen",
+  "effortLevel": "high",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "teammateMode": "tmux",
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "teammateMode": "tmux",
   "preferences": {
     "tmuxSplitPanes": true
   }

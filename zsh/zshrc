@@ -317,6 +317,8 @@ export PATH=$PATH:/Users/phurin/.local/bin
 
 # bun completions
 [ -s "/Users/phurin/.oh-my-zsh/completions/_bun" ] && source "/Users/phurin/.oh-my-zsh/completions/_bun"
+# bun completions
+[ -s "/Users/phurinut.waranich/.bun/_bun" ] && source "/Users/phurinut.waranich/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"

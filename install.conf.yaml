@@ -117,6 +117,10 @@
       stdin: true
       stdout: true
       stderr: true
+    - command: ./bun/setup.zsh
+      stdin: true
+      stdout: true
+      stderr: true
     # - command: ./node/setup.zsh
     #   stdin: true
     #   stdout: true

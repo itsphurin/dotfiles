@@ -300,7 +300,7 @@ else
   branch_display="${C_BAR_ETA}--${R}"
 fi
 
-line1="📁 ${C_LABEL}repo:${R}${repo_display}${SEP}🌿 ${C_LABEL}branch:${R}${branch_display}${SEP}${C_UNCOMMITTED}?${uncommitted}${R}"
+line1="📁 ${C_LABEL}repo:${R}${repo_display}${SEP}🌿 ${C_LABEL}branch:${R}${branch_display}${SEP}${C_UNCOMMITTED}?${uncommitted}${R}${SEP}🔑 ${C_LABEL}session:${R}${C_SESSION_VAL}${session_id}${R}"
 
 # ---------------------------------------------------------------------------
 # Assemble LINE 2

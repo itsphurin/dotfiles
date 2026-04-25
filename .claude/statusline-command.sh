@@ -1,8 +1,8 @@
 #!/bin/sh
 
 input=$(cat)
-# DEBUG: capture the stdin payload so we can inspect its shape
-printf '%s' "$input" > /tmp/claude-statusline-input.json
+session_id=$(printf '%s' "$input" | jq -r '.session_id // "unknown"')
+printf '%s' "$input" > "/tmp/claude-statusline-${session_id}.json"
 
 # ---------------------------------------------------------------------------
 # ANSI color helpers

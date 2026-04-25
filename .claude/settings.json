@@ -5,6 +5,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "sonnet",
   "enableAllProjectMcpServers": true,
   "hooks": {
     "PreToolUse": [
@@ -71,6 +72,7 @@
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
+  "verbose": true,
   "teammateMode": "tmux",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,

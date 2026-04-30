@@ -79,5 +79,6 @@
   "voiceEnabled": true,
   "preferences": {
     "tmuxSplitPanes": true
-  }
+  },
+  "advisorModel": "opus"
 }

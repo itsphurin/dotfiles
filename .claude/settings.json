@@ -69,6 +69,7 @@
     }
   },
   "effortLevel": "high",
+  "advisorModel": "opus",
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
@@ -79,6 +80,5 @@
   "voiceEnabled": true,
   "preferences": {
     "tmuxSplitPanes": true
-  },
-  "advisorModel": "opus"
+  }
 }

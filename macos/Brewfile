@@ -26,6 +26,8 @@ brew "cmake"
 brew "direnv"
 # Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Interact with Google Gemini AI models from the command-line
@@ -124,8 +126,6 @@ cask "android-platform-tools"
 cask "anki"
 # Application uninstaller
 cask "appcleaner"
-# Chromium based browser
-cask "arc"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Window manager that organizes desktop applications into predefined zones
@@ -138,6 +138,8 @@ cask "blender"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software

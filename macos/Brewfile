@@ -150,6 +150,8 @@ cask "drawio"
 cask "dropbox"
 # Download manager with a torrent client
 cask "folx"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Web browser
 cask "google-chrome"
 # Open-source video transcoder
@@ -166,8 +168,6 @@ cask "jettison"
 cask "jordanbaird-ice"
 # Open-source keystroke visualiser
 cask "keycastr"
-# GPU-based terminal emulator
-cask "kitty"
 # Kubernetes IDE
 cask "lens"
 # Discover, download, and run local LLMs

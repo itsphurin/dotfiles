@@ -1,0 +1,6 @@
+font-family = "JetBrainsMono Nerd Font"
+theme = 0x96f
+font-size = 14
+font-thicken = false
+adjust-cell-height = 15%
+macos-option-as-alt = true

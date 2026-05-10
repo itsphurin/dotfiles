@@ -14,9 +14,9 @@
     ~/.config/nvim:
       create: true
       path: ./config/nvim
-    ~/.config/kitty:
+    ~/.config/ghostty:
       create: true
-      path: ./config/kitty
+      path: ./config/ghostty
     ~/.config/btop:
       create: true
       path: ~/Dropbox/config/btop

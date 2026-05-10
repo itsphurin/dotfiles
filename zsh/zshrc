@@ -290,7 +290,6 @@ source ~/dotfiles/zsh/scripts/git.sh
 source ~/dotfiles/zsh/scripts/brew.sh
 source ~/dotfiles/zsh/scripts/jira.sh
 source ~/dotfiles/zsh/scripts/k8s.sh
-source ~/dotfiles/zsh/scripts/tmux-window-name.sh
 
 source ~/dotfiles/zsh/scripts/auto-Hypr.sh
 source ~/dotfiles/zsh/scripts/batman-theme.sh

@@ -41,19 +41,10 @@
     "code-simplifier@claude-plugins-official": false,
     "frontend-design@claude-plugins-official": false,
     "github@claude-plugins-official": false,
-    "document-skills@anthropic-agent-skills": false,
-    "impeccable@impeccable": false,
     "skill-creator@claude-plugins-official": true,
     "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
-    "impeccable": {
-      "source": {
-        "source": "github",
-        "repo": "pbakaus/impeccable"
-      },
-      "autoUpdate": true
-    },
     "n8n-skills": {
       "source": {
         "source": "github",

@@ -21,6 +21,7 @@
       create: true
       path: ~/Dropbox/config/btop
     ~/.gitconfig: ./.gitconfig
+    ~/.codex/config.toml: ./.codex/config.toml
     ~/.claude/settings.json: ./.claude/settings.json
     ~/.claude/settings.local.json: ./.claude/settings.local.json
     ~/.claude/statusline-command.sh: ./.claude/statusline-command.sh

@@ -45,6 +45,10 @@ cd ~/dotfiles && ./install
 - `skills/`, `agents/`, `commands/` — custom Claude Code extensions
 - `statusline-command.sh` — custom status line script
 
+## Codex CLI Config
+
+`.codex/config.toml` is symlinked into `~/.codex/config.toml` and stores stable Codex TUI settings, including `/statusline`. Do not symlink the whole `~/.codex/` directory because it contains auth, sessions, logs, caches, and local state.
+
 ## Zsh Scripts
 
 `zsh/scripts/` scripts are sourced by `zshrc`. Add personal scripts to `zsh/scripts/custom/*.sh` — they auto-load.

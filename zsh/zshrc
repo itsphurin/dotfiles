@@ -187,10 +187,10 @@ alias pwdc='echo -n $(pwd) | clipcopy'
 alias uuidgenc='uuidgen | tr "[:upper:]" "[:lower:]" | clipcopy'
 
 # vibe coding 😎
-alias c='claude'
-alias c!='claude!'
-alias claude='claude --allow-dangerously-skip-permissions'
-alias claude!='claude --dangerously-skip-permissions'
+alias 'c+'='claude+'
+alias 'c++'='claude++'
+alias 'claude+'='claude --allow-dangerously-skip-permissions'
+alias 'claude++'='claude --dangerously-skip-permissions'
 
 # My most frequently accessed directories (for simply, try using: `als cd`, `als nv`)
 alias cda='cd ~/dotfiles/arch/'

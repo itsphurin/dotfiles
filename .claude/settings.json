@@ -42,7 +42,8 @@
     "frontend-design@claude-plugins-official": false,
     "github@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": true,
-    "codex@openai-codex": true
+    "codex@openai-codex": true,
+    "claude-md-management@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "n8n-skills": {

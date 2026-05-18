@@ -79,7 +79,6 @@ plugins=(
   colored-man-pages
   git
   kubectl
-  vi-mode
   z
   zsh-claudecode-completion
   zsh-syntax-highlighting
@@ -126,7 +125,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  bindkey '^L' vi-forward-word
   bindkey '^k' up-line-or-search
   bindkey '^j' down-line-or-search
   # bindkey '^A' autosuggest-toggle

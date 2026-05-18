@@ -52,13 +52,6 @@
         "repo": "czlonkowski/n8n-skills"
       }
     },
-    "omc": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
-      },
-      "autoUpdate": true
-    },
     "openai-codex": {
       "source": {
         "source": "github",
@@ -72,7 +65,9 @@
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "verbose": true,
+  "autoCompactEnabled": false,
   "teammateMode": "tmux",
+  "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,

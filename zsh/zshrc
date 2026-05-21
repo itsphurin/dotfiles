@@ -146,7 +146,7 @@ fi
 # Syntax highlighting for man pages using bat
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export TZ=Asia/Bangkok
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="kitty"
 
 # USE NVIM as VISUAL EDITOR: https://unix.stackexchange.com/a/501863

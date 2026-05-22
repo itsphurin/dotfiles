@@ -20,5 +20,6 @@ else
 	# git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
 	git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 	git clone https://github.com/wbingli/zsh-claudecode-completion.git ~/.oh-my-zsh/custom/plugins/zsh-claudecode-completion
+	git clone https://github.com/jirutka/zsh-shift-select.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-shift-select
 	echo "DONE"
 fi

@@ -82,6 +82,7 @@ plugins=(
   z
   zsh-claudecode-completion
   zsh-syntax-highlighting
+  zsh-shift-select
   # alias-finder # try `als` for self-explanation
   # aliases # all good shortcuts (e.g. `glola` `glods` `gf` `gl`)
   # history-substring-search

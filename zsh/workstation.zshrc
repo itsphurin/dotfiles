@@ -1,0 +1,323 @@
+[[ -n "$ZPROF" ]] && zmodload zsh/zprof
+
+# Specify OS first
+[[ -f /etc/os-release ]] && source /etc/os-release
+
+# Starship initialization
+# exists starship && eval "$(starship init zsh)"
+
+# Path to your oh-my-zsh installation.
+# export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  colored-man-pages
+  git
+  kubectl
+  z
+  zsh-claudecode-completion
+  zsh-syntax-highlighting
+  zsh-shift-select
+  # alias-finder # try `als` for self-explanation
+  # aliases # all good shortcuts (e.g. `glola` `glods` `gf` `gl`)
+  # history-substring-search
+  # zsh-autocomplete
+  # zsh-autosuggestions
+)
+
+# Bash Completions
+# See more: https://wiki.debian.org/Add%20Bash%20Completion
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath=(/Users/phurin/.docker/completions $fpath)
+
+# source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+# export LANGUAGE=en_US.UTF-8
+# export NCURSES_NO_UTF8_ACS=1
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+#   bindkey '^k' up-line-or-search
+#   bindkey '^j' down-line-or-search
+# bindkey '^A' autosuggest-toggle
+# bindkey '^e' autosuggest-accept
+
+# zsh-autocomplete
+#   bindkey -M menuselect '^I' menu-complete
+#   bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
+# fi
+
+# zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+# zstyle ':omz:plugins:alias-finder' longer yes   # disabled by default
+# zstyle ':omz:plugins:alias-finder' exact yes    # disabled by default
+# zstyle ':omz:plugins:alias-finder' cheaper yes  # disabled by default
+
+# =========================   PERSONAL CONFIG   ================================
+
+# Set Variables
+# Syntax highlighting for man pages using bat
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export TZ=Asia/Bangkok
+export EDITOR="vim"
+export TERMINAL="kitty"
+
+# USE NVIM as VISUAL EDITOR: https://unix.stackexchange.com/a/501863
+export VISUAL="$EDITOR"
+# export BROWSER="zen-browser"
+
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+export NULLCMD=bat
+export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4 --mouse --wheel-lines=5'
+export MANWIDTH_RIGHT_OFFSET=8
+
+# Change ZSH Options
+setopt REMATCH_PCRE
+
+# Create Aliases
+alias rl='omz reload'
+alias ls='eza -lah --git'
+alias eza='eza -lah --git'
+# man alias is defined in batman-theme.sh with lazy theme detection
+alias trail='<<<${(F)path}' # See https://zsh.sourceforge.io/Doc/Release/Expansion.html
+alias szsh='source ~/.zshrc'
+alias cmd='command'
+alias sctl='systemctl'
+
+alias lg='lazygit'
+alias mk='make'
+alias pn='pnpm'
+alias mux='tmux'
+alias muxi='tmuxinator'
+alias mux-clear='rm ~/.local/share/tmux/resurrect/*'
+alias mux!='mux-clear; tmux'
+alias py3='python3'
+
+# useful aliases for development productivity across gui and cli
+alias pwdc='echo -n $(pwd) | clipcopy'
+alias uuidgenc='uuidgen | tr "[:upper:]" "[:lower:]" | tr -cd "[:print:]" | clipcopy'
+
+# vibe coding 😎
+alias 'c+'='claude+'
+alias 'c++'='claude++'
+alias 'claude+'='claude --allow-dangerously-skip-permissions'
+alias 'claude++'='claude --dangerously-skip-permissions'
+
+# My most frequently accessed directories (for simply, try using: `als cd`, `als nv`)
+alias cda='cd ~/dotfiles/arch/'
+alias cdc='cd ~/dotfiles/config/'
+alias cdd='cd ~/dotfiles/'
+alias cdh='cd ~/dotfiles/config/hypr/'
+alias cdk='cd ~/vaults/second-brain/'
+alias cdw='cd ~/Works/'
+alias cdv='cd ~/dotfiles/config/nvim/'
+alias cdz='cd ~/dotfiles/zsh/'
+alias cdha='cd ~/dotfiles/config/ags/'
+alias cdtr='cd ~/.local/share/tmux/resurrect/'
+
+alias nv='nvim'
+alias nva='nvim ~/dotfiles/arch/'
+alias nvc='nvim ~/dotfiles/config/'
+alias nvd='nvim ~/dotfiles/'
+alias nvh='nvim ~/dotfiles/config/hypr/'
+alias nvk='nvim ~/vaults/second-brain/'
+alias nvv='nvim ~/dotfiles/config/nvim/'
+alias nvz='nvim ~/dotfiles/zsh/zshrc'
+alias nvha='nvim ~/dotfiles/config/ags/'
+
+# DevOps tools aliases
+alias dcb='docker compose build'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dcw='docker compose watch'
+alias dcuw='docker compose up --build --watch'
+alias vag='vagrant'
+alias vag!='VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant $@' # NOTE: temporary fix rubygem dependency bug
+
+# macOS specifics
+[[ $OSTYPE == "darwin"* ]] && alias rm='trash'
+
+# Customize Prompt(s)
+# PROMPT='
+# %1~ %L %# '
+#
+# RPROMPT='%*'
+
+# Add Locations to $path Array
+# See https://zsh.sourceforge.io/Guide/zshguide02.html at 2.5.11
+# ( For $PATH Variable See https://unix.stackexchange.com/a/26059 )
+# NOTE: brew injecting paths at ~/.zprofile
+typeset -U path
+
+path=(
+  $path
+  "$HOME/.cargo/bin"
+)
+
+# Write Handy Functions
+function mkcd() {
+  mkdir -p "$@" && cd "$_"
+}
+
+function update_man_width() {
+  # See also: https://unix.stackexchange.com/questions/215584/whats-the-name-of-the-environment-variable-with-current-terminal-width
+
+  # WAYS TO GET TERMINAL SIZES ()
+  # 1.with env $COLUMNS and $LINES
+  # 2.with stty `echo $(stty size) | awk '{print $2}'`
+  # 3.with tput `tput {cols,lines}` (it's run non-interactive shell and got 80)
+
+  # Using expr: https://unix.stackexchange.com/questions/480121/simple-command-line-calculator
+  export MANWIDTH="$(expr $COLUMNS - $MANWIDTH_RIGHT_OFFSET)"
+}
+
+function killrg() {
+  # alias killrg="echo ps -ef | rg -v 'rg|root' | rg '$@'"
+  cmd="ps -ef | rg -v 'rg|root' | rg '$@' | awk '{print \$2}'"
+  tasks=$(zsh -c "$cmd")
+  echo $tasks | xargs -I %s echo "-> killing PID :: %s"
+  echo $tasks | xargs kill
+  echo "DONE"
+}
+
+function killport() {
+  cmd="lsof -i ':$@' | tail +2 | awk '{print \$2}'"
+  tasks=$(zsh -c "$cmd")
+  echo $tasks | xargs -I %s echo "-> killing PID :: %s"
+  echo $tasks | xargs kill
+  echo "DONE"
+}
+
+# Use ZSH Plugins
+
+# ...Other Surprises
+
+source ~/dotfiles/zsh/env/go.sh
+source ~/dotfiles/zsh/env/pnpm.sh
+source ~/dotfiles/zsh/env/rubygems.sh
+source ~/dotfiles/zsh/env/claude.sh
+
+source ~/dotfiles/zsh/scripts/git.sh
+source ~/dotfiles/zsh/scripts/brew.sh
+source ~/dotfiles/zsh/scripts/jira.sh
+source ~/dotfiles/zsh/scripts/k8s.sh
+
+source ~/dotfiles/zsh/scripts/auto-Hypr.sh
+source ~/dotfiles/zsh/scripts/batman-theme.sh
+
+# Support custom scripts
+for script in "$HOME/dotfiles/zsh/scripts/custom"/*.sh(N); do
+  [[ -f "$script" ]] && source "$script"
+done
+
+# Other uncategorized stuffs here (from appending output to >> .zshrc)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/phurin/.lmstudio/bin"
+# End of LM Studio CLI section
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+[[ -n "$ZPROF" ]] && zprof
+
+export PATH=$PATH:/Users/phurin/.local/bin
+
+# bun completions
+[ -s "/Users/phurin/.oh-my-zsh/completions/_bun" ] && source "/Users/phurin/.oh-my-zsh/completions/_bun"
+# bun completions
+[ -s "/Users/phurinut.waranich/.bun/_bun" ] && source "/Users/phurinut.waranich/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -1,6 +1,8 @@
 font-family = "JetBrainsMono Nerd Font"
-theme = 0x96f
-font-size = 14
+#font-family = "Menlo"
+theme = Catppuccin Mocha
+#theme = 0x96f
+#font-size = 14
 font-thicken = false
-adjust-cell-height = 15%
+adjust-cell-height = 20%
 macos-option-as-alt = true

@@ -40,7 +40,7 @@ zstyle ':omz:update' frequency 13
 DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -81,8 +81,8 @@ plugins=(
   kubectl
   z
   zsh-claudecode-completion
-  zsh-syntax-highlighting
   zsh-shift-select
+  zsh-syntax-highlighting
   # alias-finder # try `als` for self-explanation
   # aliases # all good shortcuts (e.g. `glola` `glods` `gf` `gl`)
   # history-substring-search
@@ -93,7 +93,10 @@ plugins=(
 # Bash Completions
 # See more: https://wiki.debian.org/Add%20Bash%20Completion
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-fpath=(/Users/phurin/.docker/completions $fpath)
+[[ -d "$HOME/.docker/completions" ]] && fpath=("$HOME/.docker/completions" $fpath)
+
+# Source brew early (adds site-functions to fpath) so omz's compinit sees brew completions
+source ~/dotfiles/zsh/scripts/brew.sh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -223,7 +226,7 @@ alias vag='vagrant'
 alias vag!='VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT=1 vagrant $@' # NOTE: temporary fix rubygem dependency bug
 
 # macOS specifics
-[[ $OSTYPE == "darwin"* ]] && alias rm='trash'
+# [[ $OSTYPE == "darwin"* ]] && alias rm='trash'
 
 # Customize Prompt(s)
 # PROMPT='
@@ -286,7 +289,6 @@ source ~/dotfiles/zsh/env/rubygems.sh
 source ~/dotfiles/zsh/env/claude.sh
 
 source ~/dotfiles/zsh/scripts/git.sh
-source ~/dotfiles/zsh/scripts/brew.sh
 source ~/dotfiles/zsh/scripts/jira.sh
 source ~/dotfiles/zsh/scripts/k8s.sh
 
@@ -301,23 +303,24 @@ done
 # Other uncategorized stuffs here (from appending output to >> .zshrc)
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/phurin/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 export PATH="$HOME/.local/bin:$PATH"
 
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
 [[ -n "$ZPROF" ]] && zprof
 
-export PATH=$PATH:/Users/phurin/.local/bin
-
-# bun completions
-[ -s "/Users/phurin/.oh-my-zsh/completions/_bun" ] && source "/Users/phurin/.oh-my-zsh/completions/_bun"
 # bun completions
 [ -s "/Users/phurinut.waranich/.bun/_bun" ] && source "/Users/phurinut.waranich/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/phurinut.waranich/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

@@ -1,4 +1,4 @@
-tap "arthur-ficial/tap"
+tap "arthur-ficial/tap", "https://github.com/Arthur-Ficial/homebrew-tap"
 tap "cloudflare/cloudflare"
 tap "eth-p/software"
 tap "hashicorp/tap"
@@ -40,6 +40,8 @@ brew "ghq"
 brew "git"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
+# Open-source GitLab command-line tool
+brew "glab"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Kubernetes package manager
@@ -58,6 +60,8 @@ brew "lazygit"
 brew "mactop"
 # Mac App Store command-line interface
 brew "mas"
+# Java-based project management
+brew "maven"
 # Remote terminal application
 brew "mosh"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -102,6 +106,8 @@ brew "speedtest-cli"
 brew "starship"
 # Subdomain discovery tool
 brew "subfinder"
+# Command-line interface for running and interacting with Temporal Server and UI
+brew "temporal"
 # Simplified and community-driven man pages
 brew "tldr"
 # Manage complex tmux sessions easily
@@ -114,12 +120,6 @@ brew "tree-sitter-cli"
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Read system manual pages using bat as the manual page formatter
-brew "eth-p/software/bat-extras-batman"
-# Terraform
-brew "hashicorp/tap/terraform"
-# SDKMAN! the Software Development Kit Manager
-brew "sdkman/tap/sdkman-cli"
 # Android SDK component
 cask "android-platform-tools"
 # Memory training application
@@ -138,16 +138,10 @@ cask "blender"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Databases and SQL IDE
 cask "datagrip"
 # Voice and text chat software
 cask "discord"
-# Online diagram software
-cask "drawio"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 # Download manager with a torrent client
 cask "folx"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -156,8 +150,6 @@ cask "ghostty"
 cask "google-chrome"
 # Open-source video transcoder
 cask "handbrake-app"
-# HTTP and GraphQL Client
-cask "insomnia"
 # Video and photo editor
 cask "insta360-studio"
 # Java IDE by JetBrains
@@ -182,14 +174,14 @@ cask "macpass"
 cask "microsoft-auto-update"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
-# Handy utility to manage and customize the notch area
-cask "notchnook"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # System and utility switches
 cask "only-switch"
+# JDK from Oracle
+cask "oracle-jdk@21"
 # Remote desktop
 cask "parsec"
 # PHP IDE by JetBrains
@@ -221,36 +213,27 @@ cask "warp"
 # JavaScript IDE
 cask "webstorm"
 mas "Blackmagic Disk Speed Test", id: 425264550
-mas "Boom 3D", id: 1233048948
 mas "Clever Data Recovery", id: 431224317
 mas "ColorSlurp", id: 1287239339
 mas "CrystalFetch", id: 6454431289
 mas "DaisyDisk", id: 411643860
 mas "DaVinci Resolve", id: 571213070
 mas "DevCleaner", id: 1388020431
-mas "Ebook Converter", id: 1081457679
 mas "Enchanted", id: 6474268307
-mas "Free Ruler", id: 1483172210
-mas "Goodnotes", id: 1444383602
-mas "Hand Mirror", id: 1502839586
+mas "iLovePDF", id: 1207332399
 mas "JSON Peep", id: 1458969831
 mas "Keka", id: 470158793
 mas "Keynote", id: 361285480
 mas "Kindle", id: 302584613
 mas "LINE", id: 539883307
 mas "Maccy", id: 1527619437
-mas "Magnet", id: 441258766
 mas "Notion Web Clipper", id: 1559269364
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "PDFOptim", id: 621276561
-mas "Perplexity", id: 6714467650
 mas "Redis Insight", id: 6446987963
 mas "Reeder", id: 6475002485
-mas "S3", id: 6447647340
 mas "Tailscale", id: 1475387142
-mas "Usage for Claude", id: 6755173244
-mas "Widgetter", id: 1553223588
 mas "Windows App", id: 1295203466
 vscode "aaron-bond.better-comments"
 vscode "ahmadalli.vscode-nginx-conf"
@@ -279,7 +262,6 @@ vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
 vscode "foxundermoon.shell-format"
 vscode "gencer.html-slim-scss-css-class-completion"
-vscode "github.copilot-chat"
 vscode "golang.go"
 vscode "graphql.vscode-graphql"
 vscode "graphql.vscode-graphql-execution"

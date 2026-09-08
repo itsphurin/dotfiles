@@ -1,22 +1,26 @@
 tap "appgram/tap", "https://github.com/AppGram/homebrew-tap", trusted: true
 tap "eth-p/software"
 tap "sdkman/tap"
-tap "slp/krunkit"
+tap "slp/krunkit", trusted: true
 tap "steipete/tap"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
+# Bash scripts that integrate bat with various command-line tools
+brew "bat-extras"
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Database version control to control migrations
+brew "flyway"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -39,6 +43,8 @@ brew "helm"
 brew "python@3.14"
 # Interactive environments for writing and running code
 brew "jupyterlab"
+# Super fast CLI tool to decode and encode JWTs built in Rust
+brew "jwt-cli"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
 # Generic command-line non-JVM Apache Kafka producer and consumer
@@ -53,10 +59,6 @@ brew "maven"
 brew "molten-vk"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Port scanning utility for large networks
-brew "nmap"
-# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
-brew "openvpn"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
@@ -79,10 +81,10 @@ brew "rust"
 brew "speedtest-cli"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Very fast implementation of tldr in Rust
+brew "tealdeer"
 # Command-line interface for running and interacting with Temporal Server and UI
 brew "temporal"
-# Simplified and community-driven man pages
-brew "tldr"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
@@ -97,6 +99,8 @@ brew "witr"
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# A CLI tool to start Linux KVM or macOS Hypervisor framework virtual machines using the libkrun platform.
+brew "slp/krunkit/krunkit", trusted: true
 # Display management tool
 cask "betterdisplay"
 # OpenAI's official ChatGPT desktop app
@@ -107,10 +111,14 @@ cask "claude"
 cask "codex"
 # Databases and SQL IDE
 cask "datagrip"
+# Online diagram software
+cask "drawio"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Go (golang) IDE
+cask "goland"
 # Web browser
 cask "google-chrome"
 # Open-source video transcoder
@@ -123,10 +131,14 @@ cask "intellij-idea"
 cask "lens"
 # Open-source, KeePass-client and password manager
 cask "macpass"
+# Meeting transcription and analysis application
+cask "meetily"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # System and utility switches
 cask "only-switch"
+# Client program for the OpenVPN Access Server
+cask "openvpn-connect"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
 # Collaboration platform for API development
@@ -141,6 +153,8 @@ cask "raycast"
 cask "rocket"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Displays all open files and sockets in use by all running processes
+cask "sloth"
 # System monitor for the menu bar
 cask "stats"
 # JDK from the Eclipse Foundation (Adoptium)
@@ -148,10 +162,6 @@ cask "temurin@21"
 # JavaScript IDE
 cask "webstorm"
 go "github.com/go-delve/delve/cmd/dlv"
-uv "google-agents-cli"
-npm "@llamaindex/liteparse"
-npm "@nutteen/ist"
-npm "@nutteen/symphony"
-npm "happy"
-npm "oh-my-claude-sisyphus"
-npm "pptxgenjs"
+npm "wscat"
+
+# vim:ft=ruby

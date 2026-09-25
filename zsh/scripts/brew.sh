@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  export BREWFILE_PATH="$HOME/dotfiles/macos/Brewfile"
-  mkdir -p "$(dirname "$BREWFILE_PATH")"
+  export BREWFILE_PATH="$HOME/dotfiles/macos/workstation.Brewfile"
   # Static brew shellenv (regenerate with: /opt/homebrew/bin/brew shellenv)
   export HOMEBREW_PREFIX="/opt/homebrew"
   export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
@@ -13,11 +12,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 elif [[ $(uname -r) == *'WSL'* ]]; then
   export BREWFILE_PATH="$HOME/dotfiles/linux/WSL/Brewfile"
-  mkdir -p "$(dirname "$BREWFILE_PATH")"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export BREWFILE_PATH="$HOME/dotfiles/linux/$ID/Brewfile"
-  mkdir -p "$(dirname "$BREWFILE_PATH")"
   # TODO: eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -25,6 +22,8 @@ function bbd() {
   if [[ ("$OSTYPE" != "darwin"* && "$OSTYPE" != "linux-gnu"*) ]]; then
     echo "Unknown \$OSTYPE, aborting process"
   else
+    # Created here, not at shell startup: a fork costs ~10ms on this machine
+    mkdir -p "$(dirname "$BREWFILE_PATH")"
     brew bundle dump --force --describe --file "$BREWFILE_PATH"
     zsh -c "echo \"\" >> $BREWFILE_PATH && echo -e \"# vim:ft=ruby\" >> $BREWFILE_PATH"
   fi

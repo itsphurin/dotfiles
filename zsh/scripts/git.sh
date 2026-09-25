@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-if [[ $ID == "arch" ]]; then
+# Ordered cheapest test first: $OSTYPE and $ID are shell variables, but the WSL
+# check forks `uname` (~10ms on this machine), so it has to stay last.
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias gopen='git config --get remote.origin.url | perl -pe "s/:(?!\/\/)/\//g" | sed "s/.*git@/https:\/\//" | sed "s/.git$//" | xargs -I % echo "open %" | sh'
+  alias gopr='
+    git config --get remote.origin.url | \
+    perl -pe "s/:(?!\/\/)/\//g" | \
+    sed "s/.*git@/https:\/\//" | \
+    sed "s/.git$//" | \
+    xargs -I _ echo "open _/pull-requests/new?source=$(git branch --show-current)\&dest=develop" | sh'
+elif [[ $ID == "arch" ]]; then
   alias gopen='git config --get remote.origin.url | perl -pe "s/:(?!\/\/)/\//g" | sed "s/.*git@/https:\/\//" | sed "s/.git$//" | xargs -I % echo "xdg-open %" | sh'
   alias gopr='
     git config --get remote.origin.url | \
@@ -14,12 +24,4 @@ elif [[ $(uname -r) == *'WSL'* ]]; then
     perl -pe "s/:(?!\/\/)/\//g" | sed "s/.*git@/https:\/\//" | \
     sed "s/.git$//" | \
     xargs -I _ echo "explorer.exe _/pull-requests/new?source=$(git branch --show-current)\&dest=develop" | sh'
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  alias gopen='git config --get remote.origin.url | perl -pe "s/:(?!\/\/)/\//g" | sed "s/.*git@/https:\/\//" | sed "s/.git$//" | xargs -I % echo "open %" | sh'
-  alias gopr='
-    git config --get remote.origin.url | \
-    perl -pe "s/:(?!\/\/)/\//g" | \
-    sed "s/.*git@/https:\/\//" | \
-    sed "s/.git$//" | \
-    xargs -I _ echo "open _/pull-requests/new?source=$(git branch --show-current)\&dest=develop" | sh'
 fi

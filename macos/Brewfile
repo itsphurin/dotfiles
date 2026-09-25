@@ -114,8 +114,7 @@ brew "tldr"
 brew "tmuxinator"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Parser generator tool
-brew "tree-sitter-cli"
+# NOTE: tree-sitter-cli is installed by Mason (see nvim lsp/init.lua), not Homebrew
 # JavaScript package manager
 brew "yarn"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
